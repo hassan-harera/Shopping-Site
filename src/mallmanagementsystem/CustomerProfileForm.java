@@ -17,8 +17,9 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         this.UserName = uname;
         con = MyConnection.con();
         getCustomerId();
-        this.setLocationRelativeTo(null);
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")

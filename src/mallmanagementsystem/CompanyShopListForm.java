@@ -22,6 +22,7 @@ public class CompanyShopListForm extends javax.swing.JFrame {
         sellHistory = new JTable();
         visitHistory = new JTable();
         initComponents();
+        this.setLocationRelativeTo(null);
         getShopList();
 
     }

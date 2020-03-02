@@ -9,15 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
-    
+
     private Connection con = null;
-    
+
     public LoginForm() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,29 +202,29 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-        
+
         System.exit(0);
 
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-        
+
         this.setState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
-        
+
         System.exit(0);
 
     }//GEN-LAST:event_jcancelActionPerformed
 
     private void jloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jloginActionPerformed
-        
+
         PreparedStatement ps;
         String uname = juname.getText();
         String pass = String.valueOf(jpass.getPassword());
-        
+
         if (uname.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter username");
         } else if (pass.equals("")) {
@@ -242,6 +242,7 @@ public class LoginForm extends javax.swing.JFrame {
                     if (ps.getResultSet().getBoolean("isadmin")) {
                         this.dispose();
                         new AdminProfileForm().setVisible(true);
+                        this.dispose();
                         return;
                     }
                 }
@@ -258,13 +259,14 @@ public class LoginForm extends javax.swing.JFrame {
                         new BussinessProfileForm(uname).setVisible(true);
                     } else {
                         new CustomerProfileForm(uname).setVisible(true);
+                        this.dispose();
                     }
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
 
     }//GEN-LAST:event_jloginActionPerformed
 
@@ -272,7 +274,7 @@ public class LoginForm extends javax.swing.JFrame {
         this.dispose();
         new ChooseSignupForm().setVisible(true);
     }//GEN-LAST:event_jsignupActionPerformed
-    
+
     private boolean checkUsername(String uname) {
         PreparedStatement ps;
         String query = "select uname from user where uname=?";
@@ -286,7 +288,7 @@ public class LoginForm extends javax.swing.JFrame {
             Logger.getLogger(SignupForm.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,7 +307,7 @@ public class LoginForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean checkPassword(String uname, String pass) {
-        
+
         PreparedStatement ps;
         String query = "select upassword from user where uname=?";
         try {
@@ -320,8 +322,8 @@ public class LoginForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
-        
+
     }
 }

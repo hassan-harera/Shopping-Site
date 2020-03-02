@@ -15,6 +15,8 @@ public class AddShopForm extends javax.swing.JFrame {
     public AddShopForm() {
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")

@@ -15,6 +15,7 @@ public class AdminShopListForm extends javax.swing.JFrame {
     public AdminShopListForm() throws HeadlessException {
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
         getShopList();
     }
 

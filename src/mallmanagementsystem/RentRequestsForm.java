@@ -15,6 +15,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
     public RentRequestsForm() {
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
         getRequests();
     }
 

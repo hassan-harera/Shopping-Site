@@ -5,19 +5,15 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
-import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+
 
 public class CustomerOrders extends javax.swing.JFrame {
 
-    private Vector<Vector<Object>> data;
-    private Connection con;
+    private final Connection con;
     private ResultSet res;
-    private ResultSetMetaData metaData;
     private final int CustomerId;
-    private String UserName;
+    private final String UserName;
     private PreparedStatement ps;
 
     public CustomerOrders(String uname, int cid) {
@@ -25,6 +21,7 @@ public class CustomerOrders extends javax.swing.JFrame {
         this.UserName = uname;
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
         getCustomerOrders();
 
     }
@@ -40,7 +37,7 @@ public class CustomerOrders extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jOrderId = new javax.swing.JTextField();
-        jOrderList = new javax.swing.JButton();
+        jRefresh = new javax.swing.JButton();
         jBack = new javax.swing.JButton();
         jCancelOrder = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -77,12 +74,12 @@ public class CustomerOrders extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Order ID:");
 
         jOrderId.setBackground(new java.awt.Color(108, 122, 137));
-        jOrderId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jOrderId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jOrderId.setForeground(new java.awt.Color(228, 241, 254));
         jOrderId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,18 +92,18 @@ public class CustomerOrders extends javax.swing.JFrame {
             }
         });
 
-        jOrderList.setBackground(new java.awt.Color(34, 167, 240));
-        jOrderList.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jOrderList.setForeground(new java.awt.Color(255, 255, 255));
-        jOrderList.setText("View Order List");
-        jOrderList.addActionListener(new java.awt.event.ActionListener() {
+        jRefresh.setBackground(new java.awt.Color(34, 167, 240));
+        jRefresh.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        jRefresh.setText("Refresh");
+        jRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOrderListActionPerformed(evt);
+                jRefreshActionPerformed(evt);
             }
         });
 
         jBack.setBackground(new java.awt.Color(242, 38, 19));
-        jBack.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBack.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jBack.setForeground(new java.awt.Color(255, 255, 255));
         jBack.setText("Back");
         jBack.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +113,7 @@ public class CustomerOrders extends javax.swing.JFrame {
         });
 
         jCancelOrder.setBackground(new java.awt.Color(34, 167, 240));
-        jCancelOrder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jCancelOrder.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jCancelOrder.setForeground(new java.awt.Color(255, 255, 255));
         jCancelOrder.setText("Cancel Order");
         jCancelOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +148,7 @@ public class CustomerOrders extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jCancelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +168,7 @@ public class CustomerOrders extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jCancelOrder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jOrderList)
+                .addComponent(jRefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBack)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -228,10 +225,10 @@ public class CustomerOrders extends javax.swing.JFrame {
         new CustomerProfileForm(UserName).setVisible(true);
     }//GEN-LAST:event_jBackActionPerformed
 
-    private void jOrderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderListActionPerformed
+    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
 
 
-    }//GEN-LAST:event_jOrderListActionPerformed
+    }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderIdActionPerformed
         // TODO add your handling code here:
@@ -270,7 +267,7 @@ public class CustomerOrders extends javax.swing.JFrame {
 
     private boolean checkOrderID(String oid) {
 
-        String query = "select oid from customer where oid=?";
+        String query = "select oid from customeritems where oid=?";
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, Integer.parseInt(oid));
@@ -294,10 +291,9 @@ public class CustomerOrders extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JTextField jOrderId;
-    private javax.swing.JButton jOrderList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

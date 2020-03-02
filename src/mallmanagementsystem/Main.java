@@ -23,7 +23,7 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                new CustomerOrders("hassan_harera", 0).setVisible(true);
             }
         });
     }

@@ -16,6 +16,7 @@ public class ShopSellHistoryForm extends javax.swing.JFrame {
         shopId = sid;
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
         getSellHistory();
     }
 

@@ -15,6 +15,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
     GuestBookMessagesForm() {
         con = MyConnection.con();
         initComponents();
+        this.setLocationRelativeTo(null);
         getGuestBookMessages();
     }
 
@@ -299,7 +300,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
         jMessageId.setText("");
         getGuestBookMessages();
     }//GEN-LAST:event_jRefreshActionPerformed
- 
+
     private boolean checkMessageID(String mid) {
 
         PreparedStatement ps;
