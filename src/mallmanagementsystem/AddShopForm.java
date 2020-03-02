@@ -9,15 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AddShopForm extends javax.swing.JFrame {
-    
+
     private Connection con = null;
-    
+
     public AddShopForm() {
         con = MyConnection.con();
         initComponents();
-        this.setLocationRelativeTo(null);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,6 +41,11 @@ public class AddShopForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -53,7 +57,7 @@ public class AddShopForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("New Shop ");
 
@@ -83,7 +87,7 @@ public class AddShopForm extends javax.swing.JFrame {
         });
 
         jadd.setBackground(new java.awt.Color(34, 167, 240));
-        jadd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jadd.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jadd.setForeground(new java.awt.Color(255, 255, 255));
         jadd.setText("Add");
         jadd.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +105,7 @@ public class AddShopForm extends javax.swing.JFrame {
         jName.setForeground(new java.awt.Color(228, 241, 254));
 
         jcancel.setBackground(new java.awt.Color(242, 38, 19));
-        jcancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcancel.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jcancel.setForeground(new java.awt.Color(255, 255, 255));
         jcancel.setText("Cancel");
         jcancel.addActionListener(new java.awt.event.ActionListener() {
@@ -138,11 +142,11 @@ public class AddShopForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jadd)
                     .addComponent(jcancel))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -187,19 +191,19 @@ public class AddShopForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-        
+
         System.exit(0);
 
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-        
+
         this.setState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaddActionPerformed
-        
+
         String name = jName.getText();
         String area = jArea.getText();
         if (name.equals("")) {
@@ -207,30 +211,27 @@ public class AddShopForm extends javax.swing.JFrame {
         } else if (area.equals("")) {
             JOptionPane.showMessageDialog(null, "Add A Shop Area");
         } else {
-            
             PreparedStatement ps;
-            
             String query = "insert into shop(sname,sarea) VALUES (?,?);";
             try {
                 ps = con.prepareStatement(query);
                 ps.setString(1, name);
                 ps.setInt(2, Integer.parseInt(area));
-                ps.execute();
+                ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "New Shop Was Added");
             } catch (SQLException ex) {
                 Logger.getLogger(AddShopForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.dispose();
             new AdminShopListForm().setVisible(true);
-            
+            this.dispose();
+
         }
     }//GEN-LAST:event_jaddActionPerformed
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
-        
-        this.dispose();
+
         new AdminShopListForm().setVisible(true);
-        
+        this.dispose();
     }//GEN-LAST:event_jcancelActionPerformed
 
     private void jAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAreaKeyPressed
@@ -244,7 +245,10 @@ public class AddShopForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jAreaKeyPressed
 
-   
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jArea;
@@ -274,7 +278,7 @@ public class AddShopForm extends javax.swing.JFrame {
             Logger.getLogger(AddShopForm.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
     }
 }

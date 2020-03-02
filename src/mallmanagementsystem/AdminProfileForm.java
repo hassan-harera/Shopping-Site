@@ -207,7 +207,6 @@ public class AdminProfileForm extends javax.swing.JFrame {
 
         this.dispose();
         new AdminShopListForm().setVisible(true);
-
     }//GEN-LAST:event_jShowShopsActionPerformed
 
 

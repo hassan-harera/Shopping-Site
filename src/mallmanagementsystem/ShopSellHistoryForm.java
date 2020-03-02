@@ -5,41 +5,49 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
-import javax.swing.JOptionPane;
 
-public class GuestBookMessagesForm extends javax.swing.JFrame {
+public class ShopSellHistoryForm extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
+    private final int shopId;
 
-    GuestBookMessagesForm() {
+    ShopSellHistoryForm(int sid) {
+        shopId = sid;
         con = MyConnection.con();
         initComponents();
-        getGuestBookMessages();
+        getSellHistory();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
         jLabelClose = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelMin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jMessageId = new javax.swing.JTextField();
-        jMark = new javax.swing.JButton();
         jBack = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jMarkAll = new javax.swing.JButton();
         jRefresh = new javax.swing.JButton();
+
+        label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -53,7 +61,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("GuestBook");
+        jLabel2.setText("Shop Sell History");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,34 +74,6 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
-
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel4.setText("Message ID:");
-
-        jMessageId.setBackground(new java.awt.Color(108, 122, 137));
-        jMessageId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jMessageId.setForeground(new java.awt.Color(228, 241, 254));
-        jMessageId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMessageIdActionPerformed(evt);
-            }
-        });
-        jMessageId.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jMessageIdKeyPressed(evt);
-            }
-        });
-
-        jMark.setBackground(new java.awt.Color(34, 167, 240));
-        jMark.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jMark.setForeground(new java.awt.Color(255, 255, 255));
-        jMark.setText("Mark it As Read");
-        jMark.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMarkActionPerformed(evt);
-            }
-        });
 
         jBack.setBackground(new java.awt.Color(242, 38, 19));
         jBack.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -119,16 +99,6 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jMarkAll.setBackground(new java.awt.Color(34, 167, 240));
-        jMarkAll.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jMarkAll.setForeground(new java.awt.Color(255, 255, 255));
-        jMarkAll.setText("Mark all As Read");
-        jMarkAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMarkAllActionPerformed(evt);
-            }
-        });
-
         jRefresh.setBackground(new java.awt.Color(34, 167, 240));
         jRefresh.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jRefresh.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,37 +120,20 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jMark, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(1, 1, 1))
-                        .addComponent(jMarkAll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jMessageId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jMessageId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jMark)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jMarkAll)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jRefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBack)
-                .addGap(63, 63, 63))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -207,7 +160,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
                         .addComponent(jLabelClose))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -242,107 +195,50 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
+        new AdminShopListForm().setVisible(true);
         this.dispose();
-        new AdminProfileForm().setVisible(true);
+
     }//GEN-LAST:event_jBackActionPerformed
-
-    private void jMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMarkActionPerformed
-
-        PreparedStatement ps;
-        String mid = jMessageId.getText();
-        if (mid.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please Enter Message ID");
-        } else if (checkMessageID(mid) == false) {
-            JOptionPane.showMessageDialog(null, "This Message Is Not Found");
-        } else {
-            try {
-                String query = "update guestbook set isread = 1 where mid = ?";
-                ps = con.prepareStatement(query);
-                ps.setInt(1, Integer.parseInt(mid));
-                ps.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-    }//GEN-LAST:event_jMarkActionPerformed
-
-    private void jMessageIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMessageIdActionPerformed
-
-    }//GEN-LAST:event_jMessageIdActionPerformed
-
-    private void jMarkAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMarkAllActionPerformed
-
-        PreparedStatement ps;
-        try {
-            String query = "update guestbook set isread = 1";
-            ps = con.prepareStatement(query);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jMarkAllActionPerformed
-
-    private void jMessageIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMessageIdKeyPressed
-
-        char in = evt.getKeyChar();
-        if (Character.isDigit(in)) {
-            jMessageId.setEditable(true);
-        } else {
-            jMessageId.setEditable(false);
-        }
-    }//GEN-LAST:event_jMessageIdKeyPressed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
 
-        jMessageId.setText("");
-        getGuestBookMessages();
+        getSellHistory();
     }//GEN-LAST:event_jRefreshActionPerformed
- 
-    private boolean checkMessageID(String mid) {
 
-        PreparedStatement ps;
-        String query = "select mid from guestbook where mid=?";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setInt(1, Integer.parseInt(mid));
-            if (ps.executeQuery().next()) {
-                return true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBack;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
-    private javax.swing.JButton jMark;
-    private javax.swing.JButton jMarkAll;
-    private javax.swing.JTextField jMessageId;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    private void getGuestBookMessages() {
+    private void getSellHistory() {
+
         PreparedStatement ps;
-        String query = "SELECT O.mid , O.Message , O.date , I.cname  FROM guestbook O  JOIN customer I ON I.cid = O.cid  where O.isread = 0 order by O.date ;";
+        String query = "SELECT  I.cname , P.sname ,  F.iname  , O.amount , O.totalprice , O.sdate  FROM sellhistory O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iiid = O.iid where O.sid = ?  order by O.sdate;";
         try {
             ps = con.prepareStatement(query);
+            ps.setInt(1, shopId);
             res = ps.executeQuery();
-            String[] strs = {"Message ID", "Message Content", "Message Date", "Customer Name"};
+            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+
         } catch (SQLException ex) {
-            Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShopSellHistoryForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);
     }

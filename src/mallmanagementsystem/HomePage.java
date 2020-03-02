@@ -27,6 +27,23 @@ public class HomePage extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -48,7 +65,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jlogintext1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jlogintext1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jlogintext1.setForeground(new java.awt.Color(255, 255, 255));
         jlogintext1.setText("Home Page");
 
@@ -197,6 +214,28 @@ public class HomePage extends javax.swing.JFrame {
     private void jcancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancel1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jcancel1ActionPerformed
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+
+
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+
+    }//GEN-LAST:event_jPanel1MouseReleased
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+
+
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+
+    }//GEN-LAST:event_jPanel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

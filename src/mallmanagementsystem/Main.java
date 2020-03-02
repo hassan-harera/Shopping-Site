@@ -23,7 +23,7 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuestBookMessagesForm().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
