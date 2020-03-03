@@ -44,6 +44,11 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -55,7 +60,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Customer Profile");
 
@@ -72,7 +77,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
         jCustomerOrders.setBackground(new java.awt.Color(34, 167, 240));
-        jCustomerOrders.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jCustomerOrders.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jCustomerOrders.setForeground(new java.awt.Color(255, 255, 255));
         jCustomerOrders.setText("Your Orders");
         jCustomerOrders.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +87,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         });
 
         jLogout.setBackground(new java.awt.Color(242, 38, 19));
-        jLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLogout.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLogout.setForeground(new java.awt.Color(255, 255, 255));
         jLogout.setText("Log out");
         jLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +97,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         });
 
         jMallShops.setBackground(new java.awt.Color(34, 167, 240));
-        jMallShops.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMallShops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jMallShops.setForeground(new java.awt.Color(255, 255, 255));
         jMallShops.setText("Browse Mall Shops");
         jMallShops.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +107,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         });
 
         jAddGuestbook.setBackground(new java.awt.Color(34, 167, 240));
-        jAddGuestbook.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jAddGuestbook.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jAddGuestbook.setForeground(new java.awt.Color(255, 255, 255));
         jAddGuestbook.setText("Send FeedBack");
         jAddGuestbook.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +220,10 @@ public class CustomerProfileForm extends javax.swing.JFrame {
         this.dispose();
         new CustomerFeedback(UserName, CustomerId).setVisible(true);
     }//GEN-LAST:event_jAddGuestbookActionPerformed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

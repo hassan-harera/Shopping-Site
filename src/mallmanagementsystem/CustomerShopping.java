@@ -49,6 +49,11 @@ public class CustomerShopping extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -60,7 +65,7 @@ public class CustomerShopping extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Shop List");
 
@@ -76,12 +81,12 @@ public class CustomerShopping extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Shop ID:");
 
         jShopId.setBackground(new java.awt.Color(108, 122, 137));
-        jShopId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jShopId.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jShopId.setForeground(new java.awt.Color(228, 241, 254));
         jShopId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +100,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         });
 
         jSellHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jSellHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jSellHistory.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSellHistory.setForeground(new java.awt.Color(255, 255, 255));
         jSellHistory.setText("View Shop Sell History");
         jSellHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +110,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         });
 
         jback.setBackground(new java.awt.Color(242, 38, 19));
-        jback.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jback.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jback.setForeground(new java.awt.Color(255, 255, 255));
         jback.setText("Back");
         jback.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +120,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         });
 
         jAddShop.setBackground(new java.awt.Color(249, 202, 36));
-        jAddShop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jAddShop.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jAddShop.setForeground(new java.awt.Color(255, 255, 255));
         jAddShop.setText("Add New Shop");
         jAddShop.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +130,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         });
 
         jVisitHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jVisitHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jVisitHistory.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jVisitHistory.setForeground(new java.awt.Color(255, 255, 255));
         jVisitHistory.setText("View Shop Visit History");
         jVisitHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +140,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         });
 
         jSellHistory1.setBackground(new java.awt.Color(34, 167, 240));
-        jSellHistory1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jSellHistory1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSellHistory1.setForeground(new java.awt.Color(255, 255, 255));
         jSellHistory1.setText("View Shops List");
         jSellHistory1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +148,8 @@ public class CustomerShopping extends javax.swing.JFrame {
                 jSellHistory1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -288,6 +295,10 @@ public class CustomerShopping extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jShopIdKeyPressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
     private boolean checkShopID(String sid) {
 
         PreparedStatement ps;

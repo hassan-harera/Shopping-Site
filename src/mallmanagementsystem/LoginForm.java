@@ -50,7 +50,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        jlogintext.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jlogintext.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jlogintext.setForeground(new java.awt.Color(255, 255, 255));
         jlogintext.setText("Login");
 
@@ -66,11 +66,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Username:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Password:");
 
@@ -83,7 +83,7 @@ public class LoginForm extends javax.swing.JFrame {
         jpass.setForeground(new java.awt.Color(228, 241, 254));
 
         jlogin.setBackground(new java.awt.Color(34, 167, 240));
-        jlogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlogin.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jlogin.setForeground(new java.awt.Color(255, 255, 255));
         jlogin.setText("Login");
         jlogin.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         jcancel.setBackground(new java.awt.Color(242, 38, 19));
-        jcancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcancel.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jcancel.setForeground(new java.awt.Color(255, 255, 255));
         jcancel.setText("Cancel");
         jcancel.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +103,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         jsignup.setBackground(new java.awt.Color(249, 202, 36));
-        jsignup.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jsignup.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jsignup.setForeground(new java.awt.Color(255, 255, 255));
         jsignup.setText("Sign up");
         jsignup.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(22, 22, 22)
                 .addComponent(jlogintext, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)

@@ -52,7 +52,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Bussinnes Profile");
 
@@ -69,7 +69,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
         jshowmyshops.setBackground(new java.awt.Color(34, 167, 240));
-        jshowmyshops.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jshowmyshops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jshowmyshops.setForeground(new java.awt.Color(255, 255, 255));
         jshowmyshops.setText("Manage Your Shops");
         jshowmyshops.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         });
 
         jshowemptyshops.setBackground(new java.awt.Color(242, 38, 19));
-        jshowemptyshops.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jshowemptyshops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jshowemptyshops.setForeground(new java.awt.Color(255, 255, 255));
         jshowemptyshops.setText("LOG OUT");
         jshowemptyshops.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         });
 
         jlogout.setBackground(new java.awt.Color(34, 167, 240));
-        jlogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlogout.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jlogout.setForeground(new java.awt.Color(255, 255, 255));
         jlogout.setText("Setup New Shop");
         jlogout.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +99,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         });
 
         jNotifications.setBackground(new java.awt.Color(34, 167, 240));
-        jNotifications.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jNotifications.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jNotifications.setForeground(new java.awt.Color(255, 255, 255));
         jNotifications.setText("Show Notifications");
         jNotifications.addActionListener(new java.awt.event.ActionListener() {

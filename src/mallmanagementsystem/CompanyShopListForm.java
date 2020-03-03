@@ -51,6 +51,11 @@ public class CompanyShopListForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,6 +305,10 @@ public class CompanyShopListForm extends javax.swing.JFrame {
     private void jVisitHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisitHistory1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jVisitHistory1ActionPerformed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
     private boolean checkShopID(String sid) {
 
         PreparedStatement ps;
@@ -327,10 +336,7 @@ public class CompanyShopListForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jSellHistory;
     private javax.swing.JButton jSellHistory1;
     private javax.swing.JTable jTable3;

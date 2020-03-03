@@ -12,7 +12,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
     private final Connection con;
     private ResultSet res;
 
-    public RentRequestsForm() {
+    RentRequestsForm() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -41,6 +41,11 @@ public class RentRequestsForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -52,9 +57,14 @@ public class RentRequestsForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Rent Requests");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,8 +178,8 @@ public class RentRequestsForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jRequestId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,7 +191,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                 .addComponent(jRefresh)
                 .addGap(10, 10, 10)
                 .addComponent(jBack)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -190,7 +200,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -356,6 +366,13 @@ public class RentRequestsForm extends javax.swing.JFrame {
 
         getRequests();
     }//GEN-LAST:event_jRefreshActionPerformed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+    }//GEN-LAST:event_jPanel1MouseReleased
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jLabel2MouseReleased
     private boolean checkRequestID(String rid) {
 
         PreparedStatement ps;

@@ -47,6 +47,9 @@ public class AddShopForm extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
         });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -59,7 +62,7 @@ public class AddShopForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("New Shop ");
 
@@ -248,8 +251,11 @@ public class AddShopForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jAreaKeyPressed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

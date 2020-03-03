@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-
 public class CustomerOrders extends javax.swing.JFrame {
 
     private final Connection con;
@@ -47,6 +46,11 @@ public class CustomerOrders extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,6 +268,10 @@ public class CustomerOrders extends javax.swing.JFrame {
             jOrderId.setEditable(false);
         }
     }//GEN-LAST:event_jOrderIdKeyPressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
     private boolean checkOrderID(String oid) {
 

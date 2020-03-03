@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class AdminShopListForm extends javax.swing.JFrame {
 
@@ -61,7 +62,7 @@ public class AdminShopListForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Mall Shop List");
 
@@ -251,10 +252,16 @@ public class AdminShopListForm extends javax.swing.JFrame {
 
     private void jVisitHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisitHistoryActionPerformed
 
-        int sid = Integer.parseInt(jShopId.getText());
-        new ShopVisitHistoryForm(sid).setVisible(true);
-        this.dispose();
-
+        String name = jShopId.getText();
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+        } else if (!checkShopID(name)) {
+            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
+        } else {
+            int sid = Integer.parseInt(jShopId.getText());
+            new ShopVisitHistoryForm(sid).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jVisitHistoryActionPerformed
 
     private void jAddShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddShopActionPerformed
@@ -270,10 +277,16 @@ public class AdminShopListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed
-
-        int sid = Integer.parseInt(jShopId.getText());
-        new ShopSellHistoryForm(sid).setVisible(true);
-        this.dispose();
+        String name = jShopId.getText();
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+        } else if (!checkShopID(name)) {
+            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
+        } else {
+            int sid = Integer.parseInt(jShopId.getText());
+            new ShopSellHistoryForm(sid).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jSellHistoryActionPerformed
 
     private void jShopIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShopIdActionPerformed
@@ -306,12 +319,12 @@ public class AdminShopListForm extends javax.swing.JFrame {
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
 
-        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
 
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+
     }//GEN-LAST:event_jPanel1MouseReleased
     private boolean checkShopID(String sid) {
 
@@ -323,7 +336,6 @@ public class AdminShopListForm extends javax.swing.JFrame {
             if (ps.executeQuery().next()) {
                 return true;
             }
-            return false;
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
         }
