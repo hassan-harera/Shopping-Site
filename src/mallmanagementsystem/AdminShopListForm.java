@@ -284,7 +284,7 @@ public class AdminShopListForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
         } else {
             int sid = Integer.parseInt(jShopId.getText());
-            new ShopSellHistoryForm(sid).setVisible(true);
+            new ShopSellHistoryForm(sid, true, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jSellHistoryActionPerformed

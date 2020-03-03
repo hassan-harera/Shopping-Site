@@ -29,9 +29,9 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabelMin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jshowmyshops = new javax.swing.JButton();
+        jManage = new javax.swing.JButton();
         jshowemptyshops = new javax.swing.JButton();
-        jlogout = new javax.swing.JButton();
+        jSetup = new javax.swing.JButton();
         jNotifications = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -54,7 +54,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bussinnes Profile");
+        jLabel2.setText("Businnes Acount");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,38 +68,38 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jshowmyshops.setBackground(new java.awt.Color(34, 167, 240));
-        jshowmyshops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jshowmyshops.setForeground(new java.awt.Color(255, 255, 255));
-        jshowmyshops.setText("Manage Your Shops");
-        jshowmyshops.addActionListener(new java.awt.event.ActionListener() {
+        jManage.setBackground(new java.awt.Color(34, 167, 240));
+        jManage.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jManage.setForeground(new java.awt.Color(255, 255, 255));
+        jManage.setText("Manage Your Shops");
+        jManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jshowmyshopsActionPerformed(evt);
+                jManageActionPerformed(evt);
             }
         });
 
         jshowemptyshops.setBackground(new java.awt.Color(242, 38, 19));
-        jshowemptyshops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jshowemptyshops.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jshowemptyshops.setForeground(new java.awt.Color(255, 255, 255));
-        jshowemptyshops.setText("LOG OUT");
+        jshowemptyshops.setText("Log out");
         jshowemptyshops.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jshowemptyshopsActionPerformed(evt);
             }
         });
 
-        jlogout.setBackground(new java.awt.Color(34, 167, 240));
-        jlogout.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jlogout.setForeground(new java.awt.Color(255, 255, 255));
-        jlogout.setText("Setup New Shop");
-        jlogout.addActionListener(new java.awt.event.ActionListener() {
+        jSetup.setBackground(new java.awt.Color(34, 167, 240));
+        jSetup.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jSetup.setForeground(new java.awt.Color(255, 255, 255));
+        jSetup.setText("Setup New Shop");
+        jSetup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jlogoutActionPerformed(evt);
+                jSetupActionPerformed(evt);
             }
         });
 
         jNotifications.setBackground(new java.awt.Color(34, 167, 240));
-        jNotifications.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jNotifications.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jNotifications.setForeground(new java.awt.Color(255, 255, 255));
         jNotifications.setText("Show Notifications");
         jNotifications.addActionListener(new java.awt.event.ActionListener() {
@@ -113,27 +113,26 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jNotifications, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jlogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jshowemptyshops, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jshowmyshops, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jNotifications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSetup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jshowemptyshops, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(97, 97, 97)
                 .addComponent(jNotifications)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jshowmyshops)
+                .addComponent(jManage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlogout)
+                .addComponent(jSetup)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jshowemptyshops)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -143,7 +142,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose)
@@ -167,9 +166,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,20 +188,21 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jshowmyshopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jshowmyshopsActionPerformed
+    private void jManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageActionPerformed
 
-        
-    }//GEN-LAST:event_jshowmyshopsActionPerformed
+        new CompanyShopListForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jManageActionPerformed
 
     private void jshowemptyshopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jshowemptyshopsActionPerformed
         this.dispose();
         new HomePage().setVisible(true);
     }//GEN-LAST:event_jshowemptyshopsActionPerformed
 
-    private void jlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlogoutActionPerformed
+    private void jSetupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetupActionPerformed
         this.dispose();
-        new LoginForm().setVisible(true);
-    }//GEN-LAST:event_jlogoutActionPerformed
+        new ().setVisible(true);
+    }//GEN-LAST:event_jSetupActionPerformed
 
     private void jNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNotificationsActionPerformed
 
@@ -217,13 +215,13 @@ public class BussinessProfileForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
+    private javax.swing.JButton jManage;
     private javax.swing.JButton jNotifications;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JButton jlogout;
+    private javax.swing.JButton jSetup;
     private javax.swing.JButton jshowemptyshops;
-    private javax.swing.JButton jshowmyshops;
     // End of variables declaration//GEN-END:variables
 
     private void getBusinessId() {

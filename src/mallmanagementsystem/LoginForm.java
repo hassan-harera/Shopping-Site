@@ -215,7 +215,8 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
 
-        System.exit(0);
+        this.dispose();
+        new HomePage().setVisible(true);
 
     }//GEN-LAST:event_jcancelActionPerformed
 

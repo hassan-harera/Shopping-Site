@@ -370,7 +370,8 @@ public class SignupForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jsignupActionPerformed
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
-        System.exit(0);
+        this.dispose();
+        new HomePage().setVisible(true);
     }//GEN-LAST:event_jcancelActionPerformed
 
     private void jloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jloginActionPerformed

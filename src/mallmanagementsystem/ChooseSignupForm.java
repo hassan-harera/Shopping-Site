@@ -18,9 +18,9 @@ public class ChooseSignupForm extends javax.swing.JFrame {
         jLabelMin = new javax.swing.JLabel();
         jlogintext1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jcancel = new javax.swing.JButton();
-        jsignupcustomer = new javax.swing.JButton();
-        jsignupowner = new javax.swing.JButton();
+        JBack = new javax.swing.JButton();
+        jPersonal = new javax.swing.JButton();
+        jBusiness = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -47,63 +47,39 @@ public class ChooseSignupForm extends javax.swing.JFrame {
             }
         });
 
-        jlogintext1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jlogintext1.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jlogintext1.setForeground(new java.awt.Color(255, 255, 255));
-        jlogintext1.setText("Signup Category");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jlogintext1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelMin)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelClose)
-                .addGap(21, 21, 21))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMin, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jLabelClose)
-                    .addComponent(jlogintext1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jlogintext1.setText("ACOUNT TYPE");
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jcancel.setBackground(new java.awt.Color(19, 15, 64));
-        jcancel.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jcancel.setForeground(new java.awt.Color(255, 255, 255));
-        jcancel.setText("Back");
-        jcancel.addActionListener(new java.awt.event.ActionListener() {
+        JBack.setBackground(new java.awt.Color(19, 15, 64));
+        JBack.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        JBack.setForeground(new java.awt.Color(255, 255, 255));
+        JBack.setText("Back");
+        JBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcancelActionPerformed(evt);
+                JBackActionPerformed(evt);
             }
         });
 
-        jsignupcustomer.setBackground(new java.awt.Color(19, 15, 64));
-        jsignupcustomer.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jsignupcustomer.setForeground(new java.awt.Color(255, 255, 255));
-        jsignupcustomer.setText("Sigin up for personal");
-        jsignupcustomer.addActionListener(new java.awt.event.ActionListener() {
+        jPersonal.setBackground(new java.awt.Color(19, 15, 64));
+        jPersonal.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        jPersonal.setForeground(new java.awt.Color(255, 255, 255));
+        jPersonal.setText("Sigin up for personal acount");
+        jPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jsignupcustomerActionPerformed(evt);
+                jPersonalActionPerformed(evt);
             }
         });
 
-        jsignupowner.setBackground(new java.awt.Color(19, 15, 64));
-        jsignupowner.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jsignupowner.setForeground(new java.awt.Color(255, 255, 255));
-        jsignupowner.setText("Sigin up for business");
-        jsignupowner.addActionListener(new java.awt.event.ActionListener() {
+        jBusiness.setBackground(new java.awt.Color(19, 15, 64));
+        jBusiness.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        jBusiness.setForeground(new java.awt.Color(255, 255, 255));
+        jBusiness.setText("Sigin up for business acount");
+        jBusiness.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jsignupownerActionPerformed(evt);
+                jBusinessActionPerformed(evt);
             }
         });
 
@@ -114,21 +90,48 @@ public class ChooseSignupForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jsignupowner, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jsignupcustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(JBack, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jsignupcustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jsignupowner, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jcancel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(JBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jlogintext1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(jLabelMin)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelClose)
+                .addGap(21, 21, 21))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMin, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jLabelClose)
+                    .addComponent(jlogintext1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,14 +139,12 @@ public class ChooseSignupForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,31 +162,31 @@ public class ChooseSignupForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
+    private void JBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBackActionPerformed
         this.dispose();
         new HomePage().setVisible(true);
-    }//GEN-LAST:event_jcancelActionPerformed
+    }//GEN-LAST:event_JBackActionPerformed
 
-    private void jsignupcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsignupcustomerActionPerformed
+    private void jPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPersonalActionPerformed
         this.dispose();
         new SignupForm(false).setVisible(true);
-    }//GEN-LAST:event_jsignupcustomerActionPerformed
+    }//GEN-LAST:event_jPersonalActionPerformed
 
-    private void jsignupownerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsignupownerActionPerformed
+    private void jBusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBusinessActionPerformed
 
         this.dispose();
         new SignupForm(true).setVisible(true);
-    }//GEN-LAST:event_jsignupownerActionPerformed
+    }//GEN-LAST:event_jBusinessActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBack;
+    private javax.swing.JButton jBusiness;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton jcancel;
+    private javax.swing.JButton jPersonal;
     private javax.swing.JLabel jlogintext1;
-    private javax.swing.JButton jsignupcustomer;
-    private javax.swing.JButton jsignupowner;
     // End of variables declaration//GEN-END:variables
 }
