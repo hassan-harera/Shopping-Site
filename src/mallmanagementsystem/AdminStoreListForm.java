@@ -1,30 +1,23 @@
 package mallmanagementsystem;
 
+import java.awt.HeadlessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
-public class CompanyShopListForm extends javax.swing.JFrame {
+public class AdminStoreListForm extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
-    private final JTable sellHistory;
-    private final JTable visitHistory;
-    JTable jTable1;
 
-    public CompanyShopListForm() {
+    public AdminStoreListForm() throws HeadlessException {
         con = MyConnection.con();
-        sellHistory = new JTable();
-        visitHistory = new JTable();
         initComponents();
         this.setLocationRelativeTo(null);
         getShopList();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -37,20 +30,23 @@ public class CompanyShopListForm extends javax.swing.JFrame {
         jLabelMin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jid = new javax.swing.JTextField();
+        jShopId = new javax.swing.JTextField();
         jSellHistory = new javax.swing.JButton();
-        jback = new javax.swing.JButton();
+        jBack = new javax.swing.JButton();
+        jAddShop = new javax.swing.JButton();
         jVisitHistory = new javax.swing.JButton();
-        jSellHistory1 = new javax.swing.JButton();
-        jVisitHistory1 = new javax.swing.JButton();
+        jRefresh = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jPanel1MouseReleased(evt);
             }
@@ -68,7 +64,7 @@ public class CompanyShopListForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("SHOP LIST");
+        jLabel2.setText("Mall Shop List");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,26 +78,26 @@ public class CompanyShopListForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Shop ID:");
 
-        jid.setBackground(new java.awt.Color(108, 122, 137));
-        jid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jid.setForeground(new java.awt.Color(228, 241, 254));
-        jid.addActionListener(new java.awt.event.ActionListener() {
+        jShopId.setBackground(new java.awt.Color(108, 122, 137));
+        jShopId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jShopId.setForeground(new java.awt.Color(228, 241, 254));
+        jShopId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jidActionPerformed(evt);
+                jShopIdActionPerformed(evt);
             }
         });
-        jid.addKeyListener(new java.awt.event.KeyAdapter() {
+        jShopId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jidKeyPressed(evt);
+                jShopIdKeyPressed(evt);
             }
         });
 
         jSellHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jSellHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jSellHistory.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jSellHistory.setForeground(new java.awt.Color(255, 255, 255));
         jSellHistory.setText("View Shop Sell History");
         jSellHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -110,47 +106,47 @@ public class CompanyShopListForm extends javax.swing.JFrame {
             }
         });
 
-        jback.setBackground(new java.awt.Color(242, 38, 19));
-        jback.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jback.setForeground(new java.awt.Color(255, 255, 255));
-        jback.setText("Back");
-        jback.addActionListener(new java.awt.event.ActionListener() {
+        jBack.setBackground(new java.awt.Color(242, 38, 19));
+        jBack.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbackActionPerformed(evt);
+                jBackActionPerformed(evt);
+            }
+        });
+
+        jAddShop.setBackground(new java.awt.Color(249, 202, 36));
+        jAddShop.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jAddShop.setForeground(new java.awt.Color(255, 255, 255));
+        jAddShop.setText("Add New Shop");
+        jAddShop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddShopActionPerformed(evt);
             }
         });
 
         jVisitHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jVisitHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jVisitHistory.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jVisitHistory.setForeground(new java.awt.Color(255, 255, 255));
-        jVisitHistory.setText("Refresh");
+        jVisitHistory.setText("View Shop Visit History");
         jVisitHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jVisitHistoryActionPerformed(evt);
             }
         });
 
-        jSellHistory1.setBackground(new java.awt.Color(34, 167, 240));
-        jSellHistory1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jSellHistory1.setForeground(new java.awt.Color(255, 255, 255));
-        jSellHistory1.setText("View The Shop");
-        jSellHistory1.addActionListener(new java.awt.event.ActionListener() {
+        jRefresh.setBackground(new java.awt.Color(34, 167, 240));
+        jRefresh.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        jRefresh.setText("Refresh");
+        jRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSellHistory1ActionPerformed(evt);
+                jRefreshActionPerformed(evt);
             }
         });
 
-        jVisitHistory1.setBackground(new java.awt.Color(34, 167, 240));
-        jVisitHistory1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jVisitHistory1.setForeground(new java.awt.Color(255, 255, 255));
-        jVisitHistory1.setText("View Shop Visit History");
-        jVisitHistory1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jVisitHistory1ActionPerformed(evt);
-            }
-        });
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -161,7 +157,7 @@ public class CompanyShopListForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable3);
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,43 +165,44 @@ public class CompanyShopListForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jVisitHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSellHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSellHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jVisitHistory1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jid, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33))
+                        .addComponent(jShopId, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jAddShop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jVisitHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSellHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jSellHistory1)
+                    .addComponent(jShopId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jAddShop)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSellHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jVisitHistory1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jVisitHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jback)
-                .addGap(19, 19, 19))
+                .addComponent(jRefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBack)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -219,10 +216,10 @@ public class CompanyShopListForm extends javax.swing.JFrame {
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose)
-                .addGap(34, 34, 34))
+                .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +238,9 @@ public class CompanyShopListForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,30 +252,46 @@ public class CompanyShopListForm extends javax.swing.JFrame {
 
     private void jVisitHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisitHistoryActionPerformed
 
-        String rid = jid.getText();
-        if (rid.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please enter Shop ID");
-        } else if (checkShopID(rid) == false) {
-            JOptionPane.showMessageDialog(null, "this Shop ID is not Found");
+        String name = jShopId.getText();
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+        } else if (!checkShopID(name)) {
+            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
         } else {
-            viewVistHistory();
+            int sid = Integer.parseInt(jShopId.getText());
+            new StoreVisitHistoryForm(sid,true,null).setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jVisitHistoryActionPerformed
 
-    private void jbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbackActionPerformed
+    private void jAddShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddShopActionPerformed
+
+        this.dispose();
+        new AddShopForm().setVisible(true);
+    }//GEN-LAST:event_jAddShopActionPerformed
+
+    private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
         this.dispose();
         new AdminProfileForm().setVisible(true);
-    }//GEN-LAST:event_jbackActionPerformed
+    }//GEN-LAST:event_jBackActionPerformed
 
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed
-
-        viewSellHistory();
+        String name = jShopId.getText();
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+        } else if (!checkShopID(name)) {
+            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
+        } else {
+            int sid = Integer.parseInt(jShopId.getText());
+            new StoreSellHistoryForm(sid, true, null).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jSellHistoryActionPerformed
 
-    private void jidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jidActionPerformed
+    private void jShopIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShopIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jidActionPerformed
+    }//GEN-LAST:event_jShopIdActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
 
@@ -288,21 +303,28 @@ public class CompanyShopListForm extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jSellHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistory1ActionPerformed
-
+    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
         getShopList();
-    }//GEN-LAST:event_jSellHistory1ActionPerformed
+    }//GEN-LAST:event_jRefreshActionPerformed
 
-    private void jidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jidKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jidKeyPressed
+    private void jShopIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jShopIdKeyPressed
 
-    private void jVisitHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisitHistory1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jVisitHistory1ActionPerformed
+        char in = evt.getKeyChar();
+        if (Character.isDigit(in)) {
+            jShopId.setEditable(true);
+        } else {
+            jShopId.setEditable(false);
+        }
+    }//GEN-LAST:event_jShopIdKeyPressed
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+
+
+    }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+
     }//GEN-LAST:event_jPanel1MouseReleased
     private boolean checkShopID(String sid) {
 
@@ -314,9 +336,8 @@ public class CompanyShopListForm extends javax.swing.JFrame {
             if (ps.executeQuery().next()) {
                 return true;
             }
-            return false;
         } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(CompanyShopListForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
 
@@ -324,20 +345,20 @@ public class CompanyShopListForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAddShop;
+    private javax.swing.JButton jBack;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jSellHistory;
-    private javax.swing.JButton jSellHistory1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTextField jShopId;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton jVisitHistory;
-    private javax.swing.JButton jVisitHistory1;
-    private javax.swing.JButton jback;
-    private javax.swing.JTextField jid;
     // End of variables declaration//GEN-END:variables
 
     private void getShopList() {
@@ -348,51 +369,11 @@ public class CompanyShopListForm extends javax.swing.JFrame {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
             String[] strs = {"Shop ID", "Shop Name", "Shop Area", "Rent Value", "Company Name"};
-            jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+            jTable2.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(CompanyShopListForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jScrollPane2.setViewportView(jTable3);
+        jScrollPane2.setViewportView(jTable2);
     }
 
-    private void viewSellHistory() {
-
-        if (sellHistory.getDefaultLocale() != null) {
-            JOptionPane.showMessageDialog(null, new JScrollPane(sellHistory));
-            return;
-        }
-        PreparedStatement ps;
-        String query = "SELECT  I.cname , P.sname ,  F.iname  , O.amount , O.totalprice , O.sdate  FROM sellhistory O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iid = O.iid  order by O.sdate;";
-        try {
-            ps = con.prepareStatement(query);
-            res = ps.executeQuery();
-            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
-            sellHistory.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CompanyShopListForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(null, new JScrollPane(sellHistory));
-
-    }
-
-    private void viewVistHistory() {
-        if (visitHistory.getDefaultLocale() != null) {
-            JOptionPane.showMessageDialog(null, new JScrollPane(visitHistory));
-            return;
-        }
-        PreparedStatement ps;
-        String query = "SELECT  I.cname , P.sname , K.vdate  FROM customervisit K JOIN shop P ON K.sid = P.sid JOIN customer I ON I.cid = K.cid order by K.vdate;";
-        try {
-            ps = con.prepareStatement(query);
-            res = ps.executeQuery();
-            String[] strs = {"Customer Name", "Shop Name", "Visit Date"};
-            visitHistory.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CompanyShopListForm.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(null, new JScrollPane(visitHistory));
-    }
 }

@@ -227,7 +227,7 @@ public class AddShopForm extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(AddShopForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-            new AdminShopListForm().setVisible(true);
+            new AdminStoreListForm().setVisible(true);
             this.dispose();
 
         }
@@ -235,7 +235,7 @@ public class AddShopForm extends javax.swing.JFrame {
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
 
-        new AdminShopListForm().setVisible(true);
+        new AdminStoreListForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jcancelActionPerformed
 

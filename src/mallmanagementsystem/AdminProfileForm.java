@@ -210,7 +210,7 @@ public class AdminProfileForm extends javax.swing.JFrame {
     private void jShowShopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowShopsActionPerformed
 
         this.dispose();
-        new AdminShopListForm().setVisible(true);
+        new AdminStoreListForm().setVisible(true);
     }//GEN-LAST:event_jShowShopsActionPerformed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased

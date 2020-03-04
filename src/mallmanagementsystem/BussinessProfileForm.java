@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 
 public class BussinessProfileForm extends javax.swing.JFrame {
 
-    String UserName;
-    int BusinessId;
-    private Connection con;
+    private final String UserName;
+    private final int BusinessId;
+    private final Connection con;
 
     public BussinessProfileForm(String uname) {
         this.UserName = uname;
@@ -71,7 +71,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jManage.setBackground(new java.awt.Color(34, 167, 240));
         jManage.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jManage.setForeground(new java.awt.Color(255, 255, 255));
-        jManage.setText("Manage Your Shops");
+        jManage.setText("Manage Your Stores");
         jManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jManageActionPerformed(evt);
@@ -91,7 +91,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jSetup.setBackground(new java.awt.Color(34, 167, 240));
         jSetup.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSetup.setForeground(new java.awt.Color(255, 255, 255));
-        jSetup.setText("Setup New Shop");
+        jSetup.setText("Setup New Store");
         jSetup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSetupActionPerformed(evt);
@@ -190,7 +190,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
     private void jManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageActionPerformed
 
-        new CompanyShopListForm().setVisible(true);
+        new CompanyStoreListForm(UserName).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jManageActionPerformed
 

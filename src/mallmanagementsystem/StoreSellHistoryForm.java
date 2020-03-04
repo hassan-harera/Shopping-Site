@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
 
-public class ShopSellHistoryForm extends javax.swing.JFrame {
+public class StoreSellHistoryForm extends javax.swing.JFrame {
     
     private final Connection con;
     private ResultSet res;
@@ -14,7 +14,7 @@ public class ShopSellHistoryForm extends javax.swing.JFrame {
     private final Boolean isAdmin;
     private final String userName;
     
-    ShopSellHistoryForm(int sid, Boolean ad, String uname) {
+    StoreSellHistoryForm(int sid, Boolean ad, String uname) {
         shopId = sid;
         isAdmin = ad;
         userName = uname;
@@ -201,7 +201,7 @@ public class ShopSellHistoryForm extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
         
         if (isAdmin) {
-            new AdminShopListForm().setVisible(true);
+            new AdminStoreListForm().setVisible(true);
         } else {
             new BussinessProfileForm(userName).setVisible(true);
         }
@@ -247,7 +247,7 @@ public class ShopSellHistoryForm extends javax.swing.JFrame {
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
             
         } catch (SQLException ex) {
-            Logger.getLogger(ShopSellHistoryForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StoreSellHistoryForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);
     }
