@@ -7,21 +7,21 @@ import java.sql.*;
 import java.util.Arrays;
 
 public class StoreCustomerPrefernces extends javax.swing.JFrame {
-    
+
     private final Connection con;
     private ResultSet res;
     private final int shopId;
     private final String userName;
-    
-    StoreCustomerPrefernces(int sid,String uname) {
+
+    StoreCustomerPrefernces(int sid, String uname) {
         shopId = sid;
         userName = uname;
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
-        getSellHistory();
+        getPreferences();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,7 +93,12 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setBackground(new java.awt.Color(19, 15, 64));
+        jScrollPane2.setForeground(new java.awt.Color(34, 167, 240));
+
+        jTable1.setBackground(new java.awt.Color(19, 15, 64));
         jTable1.setFont(new java.awt.Font("Serif", 1, 10)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(34, 167, 240));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -123,7 +128,7 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -136,8 +141,8 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addComponent(jRefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBack)
@@ -191,30 +196,25 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-        
+
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-        
+
         this.setState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-        
-        if (isAdmin) {
-            new AdminStoreListForm().setVisible(true);
-        } else {
-            new BussinessProfileForm(userName).setVisible(true);
-        }
+
+        new BussinessProfileForm(userName).setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
-        
-        getSellHistory();
+        getPreferences();
     }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
@@ -241,17 +241,16 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    private void getSellHistory() {
-        
+    private void getPreferences() {
+
         PreparedStatement ps;
-        String query = "SELECT  I.cname , P.sname ,  F.iname  , O.amount , O.totalprice , O.sdate  FROM sellhistory O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iiid = O.iid where O.sid = ?  order by O.sdate;";
+        String query = "SELECT I.cname , P.sname ,  F.iname  , O.amount , O.date  FROM customeritems O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iiid = O.iid where O.ischeckedout = 0  order by O.date;";
         try {
             ps = con.prepareStatement(query);
-            ps.setInt(1, shopId);
             res = ps.executeQuery();
-            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
+            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Add Date"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(StoreCustomerPrefernces.class.getName()).log(Level.SEVERE, null, ex);
         }

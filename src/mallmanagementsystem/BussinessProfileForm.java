@@ -54,7 +54,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Businnes Acount");
+        jLabel2.setText("BUSINESS ACOUNT");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,7 +91,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
         jSetup.setBackground(new java.awt.Color(34, 167, 240));
         jSetup.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSetup.setForeground(new java.awt.Color(255, 255, 255));
-        jSetup.setText("Setup New Store");
+        jSetup.setText("Setup new Store");
         jSetup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSetupActionPerformed(evt);
@@ -116,9 +116,9 @@ public class BussinessProfileForm extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jNotifications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSetup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jshowemptyshops, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jManage, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addComponent(jshowemptyshops, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSetup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,7 +189,6 @@ public class BussinessProfileForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageActionPerformed
-
         new CompanyStoreListForm(UserName).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jManageActionPerformed
@@ -200,14 +199,13 @@ public class BussinessProfileForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jshowemptyshopsActionPerformed
 
     private void jSetupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSetupActionPerformed
-        this.dispose();
         new ().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jSetupActionPerformed
 
     private void jNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNotificationsActionPerformed
 
-        
-        
+
     }//GEN-LAST:event_jNotificationsActionPerformed
 
 

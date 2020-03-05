@@ -64,7 +64,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Mall Shop List");
+        jLabel2.setText("Mall Store List");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,7 +259,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
         } else {
             int sid = Integer.parseInt(jShopId.getText());
-            new StoreVisitHistoryForm(sid,true,null).setVisible(true);
+            new StoreVisitHistoryForm(sid, true, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jVisitHistoryActionPerformed
@@ -272,8 +272,8 @@ public class AdminStoreListForm extends javax.swing.JFrame {
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
-        this.dispose();
         new AdminProfileForm().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed
