@@ -368,7 +368,16 @@ public class CompanyStoreList extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseReleased
 
     private void jItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemsActionPerformed
-        // TODO add your handling code here:
+        String name = jShopId.getText();
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add A Store ID");
+        } else if (!checkShopID(name)) {
+            JOptionPane.showMessageDialog(null, "This Store Is Not Found");
+        } else {
+            int sid = Integer.parseInt(name);
+            new StoreItems(sid,Username).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jItemsActionPerformed
 
     private void jOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderActionPerformed

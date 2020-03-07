@@ -20,7 +20,7 @@ public class StoreItemList extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         ID = setID();
-        getStoreList();
+        getItems();
 
     }
 
@@ -894,6 +894,22 @@ public class StoreItemList extends javax.swing.JFrame {
             Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable3);
+    }
+
+    private void getItems() {
+
+        PreparedStatement ps;
+        String query = "SELECT  O.iid , I.iname ,  C.cname  ,O.iprice, O.amount ,  O.date  FROM shopitems O JOIN item I ON O.iid = I.iiid JOIN category C ON C.cid = I.cid where O.sid = ?  order by O.iid;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, shopId);
+            res = ps.executeQuery();
+            String[] strs = {"Item Id", "Item Name", "Category", "Price", "Amount", "Last Add"};
+            jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreItems.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jScrollPane2.setViewportView(jTable1);
     }
 
     private int setID() {

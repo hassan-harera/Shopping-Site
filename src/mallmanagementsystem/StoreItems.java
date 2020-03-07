@@ -7,23 +7,21 @@ import java.sql.*;
 import java.util.Arrays;
 
 public class StoreItems extends javax.swing.JFrame {
-    
+
     private final Connection con;
     private ResultSet res;
     private final int shopId;
-    private final Boolean isAdmin;
     private final String userName;
-    
-    StoreItems(int sid, Boolean ad, String uname) {
+
+    StoreItems(int sid, String uname) {
         shopId = sid;
-        isAdmin = ad;
         userName = uname;
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
-        getSellHistory();
+        getItems();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -188,30 +186,23 @@ public class StoreItems extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-        
+
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-        
+
         this.setState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-        
-        if (isAdmin) {
-            new AdminStoreList().setVisible(true);
-        } else {
-            new BussinessProfile(userName).setVisible(true);
-        }
+        new BussinessProfile(userName).setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
-        
-        getSellHistory();
+        getItems();
     }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
@@ -235,17 +226,16 @@ public class StoreItems extends javax.swing.JFrame {
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    private void getSellHistory() {
-        
+    private void getItems() {
+
         PreparedStatement ps;
-        String query = "SELECT  I.cname , P.sname ,  F.iname  , O.amount , O.totalprice , O.sdate  FROM sellhistory O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iiid = O.iid where O.sid = ?  order by O.sdate;";
+        String query = "SELECT  O.iid , I.iname ,  C.cname  ,O.iprice, O.amount ,  O.date  FROM shopitems O JOIN item I ON O.iid = I.iiid JOIN category C ON C.cid = I.cid where O.sid = ?  order by O.iid;";
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, shopId);
             res = ps.executeQuery();
-            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
+            String[] strs = {"Item Id", "Item Name", "Category", "Price", "Amount","Last Add"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
-            
         } catch (SQLException ex) {
             Logger.getLogger(StoreItems.class.getName()).log(Level.SEVERE, null, ex);
         }
