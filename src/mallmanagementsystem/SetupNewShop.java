@@ -237,7 +237,7 @@ public class SetupNewShop extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(SetupNewShop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            new AdminStoreListForm().setVisible(true);
+            new AdminStoreList().setVisible(true);
             this.dispose();
 
         }
@@ -245,7 +245,7 @@ public class SetupNewShop extends javax.swing.JFrame {
 
     private void jCanselActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCanselActionPerformed
 
-        new AdminStoreListForm().setVisible(true);
+        new AdminStoreList().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jCanselActionPerformed
 
@@ -293,7 +293,7 @@ public class SetupNewShop extends javax.swing.JFrame {
             String[] strs = {"Shop ID", "Shop Name", "Shop Area", "Rent Value", "Company Name"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);
     }

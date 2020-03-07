@@ -231,7 +231,7 @@ public class CustomerFeedback extends javax.swing.JFrame {
                 Logger.getLogger(CustomerFeedback.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.dispose();
-            new CustomerProfileForm(UserName).setVisible(true);
+            new CustomerProfile(UserName).setVisible(true);
         }
     }//GEN-LAST:event_jSendActionPerformed
 

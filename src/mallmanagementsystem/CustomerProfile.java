@@ -5,14 +5,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-public class CustomerProfileForm extends javax.swing.JFrame {
+public class CustomerProfile extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
     private final String UserName;
     private int CustomerId;
 
-    public CustomerProfileForm(String uname) {
+    public CustomerProfile(String uname) {
 
         this.UserName = uname;
         con = MyConnection.con();
@@ -249,7 +249,7 @@ public class CustomerProfileForm extends javax.swing.JFrame {
                 CustomerId = ps.getResultSet().getInt("cid");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

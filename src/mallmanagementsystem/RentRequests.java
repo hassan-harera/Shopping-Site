@@ -7,12 +7,12 @@ import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-public class RentRequestsForm extends javax.swing.JFrame {
+public class RentRequests extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
 
-    RentRequestsForm() {
+    RentRequests() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -257,7 +257,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                 ps.setInt(1, Integer.parseInt(rid));
                 ps.executeUpdate();
             } catch (SQLException | NumberFormatException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jRefuseActionPerformed
@@ -265,7 +265,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
         this.dispose();
-        new AdminProfileForm().setVisible(true);
+        new AdminProfile().setVisible(true);
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAcceptActionPerformed
@@ -286,7 +286,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                     budget = ps.getResultSet().getDouble("budget");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             //update Shop To Make the owner id refer to the new owner
@@ -299,7 +299,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                         sid = ps.getResultSet().getInt("sid");
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
                     String query = "select oid from shoprequest where rid = " + rid;
@@ -308,7 +308,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                         oid = ps.getResultSet().getInt("sid");
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 String query = "update shop set oid = ? , budget = ? where sid = ?";
                 ps = con.prepareStatement(query);
@@ -320,7 +320,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
             //remove Request from shop request table
             try {
@@ -329,7 +329,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
                 ps.setInt(1, Integer.parseInt(rid));
                 ps.executeUpdate();
             } catch (SQLException | NumberFormatException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jAcceptActionPerformed
@@ -385,7 +385,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
             }
             return false;
         } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;
@@ -420,7 +420,7 @@ public class RentRequestsForm extends javax.swing.JFrame {
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
 
         } catch (SQLException ex) {
-            Logger.getLogger(RentRequestsForm.class
+            Logger.getLogger(RentRequests.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);

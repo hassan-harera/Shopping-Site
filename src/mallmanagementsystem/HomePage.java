@@ -206,13 +206,13 @@ public class HomePage extends javax.swing.JFrame {
     private void jsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsignupActionPerformed
 
         this.dispose();
-        new ChooseSignupForm().setVisible(true);
+        new ChooseSignup().setVisible(true);
     }//GEN-LAST:event_jsignupActionPerformed
 
     private void jloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jloginActionPerformed
 
         this.dispose();
-        new LoginForm().setVisible(true);
+        new Login().setVisible(true);
     }//GEN-LAST:event_jloginActionPerformed
 
     private void jcancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancel1ActionPerformed

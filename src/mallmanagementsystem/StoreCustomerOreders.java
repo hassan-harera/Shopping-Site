@@ -252,7 +252,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
-        new BussinessProfileForm(userName).setVisible(true);
+        new BussinessProfile(userName).setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jBackActionPerformed
@@ -298,7 +298,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                     cid = r.getInt("cid");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
             String query = "insert into Customer_Notification(n_message,cid,n_date) VALUES (?,?,?,?,?);";
             try {
@@ -316,7 +316,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                 ps.setInt(1, Integer.parseInt(oid));
                 ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(RentRequestsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jRefreshActionPerformed
@@ -369,7 +369,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

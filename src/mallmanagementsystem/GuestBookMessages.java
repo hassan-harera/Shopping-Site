@@ -7,12 +7,12 @@ import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-public class GuestBookMessagesForm extends javax.swing.JFrame {
+public class GuestBookMessages extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
 
-    GuestBookMessagesForm() {
+    GuestBookMessages() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -214,11 +214,12 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelClose)))
+                        .addComponent(jLabelClose))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -254,7 +255,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
         this.dispose();
-        new AdminProfileForm().setVisible(true);
+        new AdminProfile().setVisible(true);
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMarkActionPerformed
@@ -272,7 +273,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
                 ps.setInt(1, Integer.parseInt(mid));
                 ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GuestBookMessages.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -290,7 +291,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
             ps = con.prepareStatement(query);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GuestBookMessages.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jMarkAllActionPerformed
@@ -360,7 +361,7 @@ public class GuestBookMessagesForm extends javax.swing.JFrame {
             String[] strs = {"Message ID", "Message Content", "Message Date", "Customer Name"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(GuestBookMessagesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GuestBookMessages.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);
     }

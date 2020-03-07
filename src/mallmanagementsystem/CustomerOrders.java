@@ -226,7 +226,7 @@ public class CustomerOrders extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
         this.dispose();
-        new CustomerProfileForm(UserName).setVisible(true);
+        new CustomerProfile(UserName).setVisible(true);
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed

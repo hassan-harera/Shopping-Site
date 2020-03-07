@@ -8,11 +8,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class LoginForm extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     private Connection con = null;
 
-    public LoginForm() {
+    public Login() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -242,13 +242,13 @@ public class LoginForm extends javax.swing.JFrame {
                 if (ps.executeQuery().next()) {
                     if (ps.getResultSet().getBoolean("isadmin")) {
                         this.dispose();
-                        new AdminProfileForm().setVisible(true);
+                        new AdminProfile().setVisible(true);
                         this.dispose();
                         return;
                     }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 String query = "select isowner from user where uname=?";
@@ -257,9 +257,9 @@ public class LoginForm extends javax.swing.JFrame {
                 if (ps.executeQuery().next()) {
                     if (ps.getResultSet().getBoolean("isowner")) {
                         this.dispose();
-                        new BussinessProfileForm(uname).setVisible(true);
+                        new BussinessProfile(uname).setVisible(true);
                     } else {
-                        new CustomerProfileForm(uname).setVisible(true);
+                        new CustomerProfile(uname).setVisible(true);
                         this.dispose();
                     }
                 }
@@ -273,7 +273,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsignupActionPerformed
         this.dispose();
-        new ChooseSignupForm().setVisible(true);
+        new ChooseSignup().setVisible(true);
     }//GEN-LAST:event_jsignupActionPerformed
 
     private boolean checkUsername(String uname) {

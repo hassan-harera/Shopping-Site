@@ -3,11 +3,11 @@ package mallmanagementsystem;
 import java.sql.*;
 import javax.swing.JFrame;
 
-public class AdminProfileForm extends javax.swing.JFrame {
+public class AdminProfile extends javax.swing.JFrame {
 
     private Connection con = null;
 
-    public AdminProfileForm() {
+    public AdminProfile() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -193,7 +193,7 @@ public class AdminProfileForm extends javax.swing.JFrame {
 
     private void jShowGuestBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowGuestBookActionPerformed
         this.dispose();
-        new GuestBookMessagesForm().setVisible(true);
+        new GuestBookMessages().setVisible(true);
     }//GEN-LAST:event_jShowGuestBookActionPerformed
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
@@ -203,14 +203,14 @@ public class AdminProfileForm extends javax.swing.JFrame {
 
     private void jShowRentRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowRentRequestsActionPerformed
 
-        new RentRequestsForm().setVisible(true);
+        new RentRequests().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jShowRentRequestsActionPerformed
 
     private void jShowShopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowShopsActionPerformed
 
         this.dispose();
-        new AdminStoreListForm().setVisible(true);
+        new AdminStoreList().setVisible(true);
     }//GEN-LAST:event_jShowShopsActionPerformed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased

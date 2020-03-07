@@ -6,28 +6,29 @@ import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
 
-public class StoreVisitHistoryForm extends javax.swing.JFrame {
-
+public class StoreSellHistory extends javax.swing.JFrame {
+    
     private final Connection con;
     private ResultSet res;
     private final int shopId;
     private final Boolean isAdmin;
     private final String userName;
-
-    StoreVisitHistoryForm(int sid, Boolean isa, String uname) {
+    
+    StoreSellHistory(int sid, Boolean ad, String uname) {
         shopId = sid;
+        isAdmin = ad;
         userName = uname;
-        isAdmin = isa;
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
-        getVisitHistory();
+        getSellHistory();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
         jLabelClose = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,6 +39,8 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jRefresh = new javax.swing.JButton();
 
+        label1.setText("label1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -45,6 +48,9 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
             }
         });
 
@@ -60,7 +66,7 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Shop Visit History");
+        jLabel2.setText("Shop Sell History");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +127,7 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +147,7 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -182,34 +188,38 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
+        
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
+        
         this.setState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-
+        
         if (isAdmin) {
-            new AdminStoreListForm().setVisible(true);
+            new AdminStoreList().setVisible(true);
         } else {
-            new CompanyStoreListForm(userName).setVisible(true);
+            new BussinessProfile(userName).setVisible(true);
         }
         this.dispose();
+
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
-
-        getVisitHistory();
+        
+        getSellHistory();
     }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -222,21 +232,23 @@ public class StoreVisitHistoryForm extends javax.swing.JFrame {
     private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    private void getVisitHistory() {
+    private void getSellHistory() {
+        
         PreparedStatement ps;
-        String query = "SELECT  I.cname , P.sname , K.vdate  FROM customervisit K JOIN shop P ON K.sid = P.sid JOIN customer I ON I.cid = K.cid where P.sid = ? order by K.vdate;";
+        String query = "SELECT  I.cname , P.sname ,  F.iname  , O.amount , O.totalprice , O.sdate  FROM sellhistory O JOIN shop P ON O.sid = P.sid JOIN customer I ON I.cid = O.cid JOIN item F ON F.iiid = O.iid where O.sid = ?  order by O.sdate;";
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, shopId);
             res = ps.executeQuery();
-            String[] strs = {"Customer Name", "Shop Name", "Visit Date"};
+            String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
             jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+            
         } catch (SQLException ex) {
-            Logger.getLogger(StoreVisitHistoryForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StoreSellHistory.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable1);
     }
-
 }

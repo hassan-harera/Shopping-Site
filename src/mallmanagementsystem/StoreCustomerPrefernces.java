@@ -208,7 +208,7 @@ public class StoreCustomerPrefernces extends javax.swing.JFrame {
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
-        new BussinessProfileForm(userName).setVisible(true);
+        new BussinessProfile(userName).setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jBackActionPerformed

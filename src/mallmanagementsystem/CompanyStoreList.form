@@ -150,8 +150,8 @@
                           <Component id="jVisitHistory" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSellHistory" alignment="1" max="32767" attributes="0"/>
                           <Component id="jPreferences" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jShopItems" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPreferences1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jItems" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jOrder" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
@@ -178,9 +178,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPreferences" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="jPreferences1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jOrder" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jShopItems" min="-2" max="-2" attributes="0"/>
+                      <Component id="jItems" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTerminate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -333,11 +333,12 @@
                         <Column editable="true" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jShopItems">
+            <Component class="javax.swing.JButton" name="jItems">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="a7" red="22" type="rgb"/>
@@ -351,10 +352,10 @@
                 <Property name="text" type="java.lang.String" value="View Store Items"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jShopItemsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jItemsActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jPreferences1">
+            <Component class="javax.swing.JButton" name="jOrder">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="a7" red="22" type="rgb"/>
@@ -368,7 +369,7 @@
                 <Property name="text" type="java.lang.String" value="View Order List"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPreferences1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jOrderActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

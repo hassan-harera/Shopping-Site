@@ -376,7 +376,7 @@ public class SignupForm extends javax.swing.JFrame {
 
     private void jloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jloginActionPerformed
         this.dispose();
-        new LoginForm().setVisible(true);
+        new Login().setVisible(true);
     }//GEN-LAST:event_jloginActionPerformed
 
 

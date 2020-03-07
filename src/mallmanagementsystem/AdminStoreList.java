@@ -8,12 +8,12 @@ import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-public class AdminStoreListForm extends javax.swing.JFrame {
+public class AdminStoreList extends javax.swing.JFrame {
 
     private final Connection con;
     private ResultSet res;
 
-    public AdminStoreListForm() throws HeadlessException {
+    public AdminStoreList() throws HeadlessException {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -259,7 +259,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
         } else {
             int sid = Integer.parseInt(jShopId.getText());
-            new StoreVisitHistoryForm(sid, true, null).setVisible(true);
+            new StoreVisitHistory(sid, true, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jVisitHistoryActionPerformed
@@ -267,12 +267,12 @@ public class AdminStoreListForm extends javax.swing.JFrame {
     private void jAddShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddShopActionPerformed
 
         this.dispose();
-        new AddShopForm().setVisible(true);
+        new AddShop().setVisible(true);
     }//GEN-LAST:event_jAddShopActionPerformed
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
 
-        new AdminProfileForm().setVisible(true);
+        new AdminProfile().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBackActionPerformed
 
@@ -284,7 +284,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
         } else {
             int sid = Integer.parseInt(jShopId.getText());
-            new StoreSellHistoryForm(sid, true, null).setVisible(true);
+            new StoreSellHistory(sid, true, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jSellHistoryActionPerformed
@@ -337,7 +337,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
 
@@ -371,7 +371,7 @@ public class AdminStoreListForm extends javax.swing.JFrame {
             String[] strs = {"Shop ID", "Shop Name", "Shop Area", "Rent Value", "Company Name"};
             jTable2.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(AdminProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable2);
     }

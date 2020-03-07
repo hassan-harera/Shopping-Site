@@ -201,9 +201,9 @@ public class StoreItems extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
         
         if (isAdmin) {
-            new AdminStoreListForm().setVisible(true);
+            new AdminStoreList().setVisible(true);
         } else {
-            new BussinessProfileForm(userName).setVisible(true);
+            new BussinessProfile(userName).setVisible(true);
         }
         this.dispose();
 

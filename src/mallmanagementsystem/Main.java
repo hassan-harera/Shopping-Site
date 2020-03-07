@@ -23,7 +23,7 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BussinessProfileForm("hassan").setVisible(true);
+                new CompanyStoreList("hassan").setVisible(true);
             }
         });
     }

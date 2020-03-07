@@ -252,13 +252,13 @@ public class CustomerShopping extends javax.swing.JFrame {
     private void jAddShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddShopActionPerformed
 
         this.dispose();
-        new AddShopForm().setVisible(true);
+        new AddShop().setVisible(true);
     }//GEN-LAST:event_jAddShopActionPerformed
 
     private void jbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbackActionPerformed
 
         this.dispose();
-        new AdminProfileForm().setVisible(true);
+        new AdminProfile().setVisible(true);
     }//GEN-LAST:event_jbackActionPerformed
 
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed

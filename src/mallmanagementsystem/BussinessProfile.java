@@ -5,13 +5,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-public class BussinessProfileForm extends javax.swing.JFrame {
+public class BussinessProfile extends javax.swing.JFrame {
 
     private final String UserName;
     private final int BusinessId;
     private final Connection con;
 
-    public BussinessProfileForm(String uname) {
+    public BussinessProfile(String uname) {
         this.UserName = uname;
         con = MyConnection.con();
         getBusinessId();
@@ -54,7 +54,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("BUSINESS ACOUNT");
+        jLabel2.setText("Business Acount");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +119,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
                     .addComponent(jManage, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .addComponent(jshowemptyshops, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSetup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +141,8 @@ public class BussinessProfileForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose)
@@ -189,7 +189,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageActionPerformed
-        new CompanyStoreListForm(UserName).setVisible(true);
+        new CompanyStoreList(UserName).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jManageActionPerformed
 
@@ -232,7 +232,7 @@ public class BussinessProfileForm extends javax.swing.JFrame {
                 BusinessId = ps.getResultSet().getInt("oid");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BussinessProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BussinessProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

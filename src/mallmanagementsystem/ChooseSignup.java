@@ -2,9 +2,9 @@ package mallmanagementsystem;
 
 import javax.swing.JFrame;
 
-public class ChooseSignupForm extends javax.swing.JFrame {
+public class ChooseSignup extends javax.swing.JFrame {
 
-    public ChooseSignupForm() {
+    public ChooseSignup() {
         initComponents();
         this.setLocationRelativeTo(null);
     }

@@ -8,11 +8,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class AddShopForm extends javax.swing.JFrame {
+public class AddShop extends javax.swing.JFrame {
 
     private Connection con = null;
 
-    public AddShopForm() {
+    public AddShop() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -225,9 +225,9 @@ public class AddShopForm extends javax.swing.JFrame {
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "New Shop Was Added");
             } catch (SQLException ex) {
-                Logger.getLogger(AddShopForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            new AdminStoreListForm().setVisible(true);
+            new AdminStoreList().setVisible(true);
             this.dispose();
 
         }
@@ -235,7 +235,7 @@ public class AddShopForm extends javax.swing.JFrame {
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
 
-        new AdminStoreListForm().setVisible(true);
+        new AdminStoreList().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jcancelActionPerformed
 
@@ -283,7 +283,7 @@ public class AddShopForm extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddShopForm.class
+            Logger.getLogger(AddShop.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
 

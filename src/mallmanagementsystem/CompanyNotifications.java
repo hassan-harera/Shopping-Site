@@ -247,7 +247,7 @@ public class CompanyNotifications extends javax.swing.JFrame {
     private void jbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbackActionPerformed
 
         this.dispose();
-        new AdminProfileForm().setVisible(true);
+        new AdminProfile().setVisible(true);
     }//GEN-LAST:event_jbackActionPerformed
 
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed
