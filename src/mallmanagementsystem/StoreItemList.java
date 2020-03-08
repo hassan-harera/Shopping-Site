@@ -526,6 +526,17 @@ public class StoreItemList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "write the item id which you want to modify it");
         } else {
             if (category != null) {
+                query = "select cid from category where cname = ?;";
+                try {
+                    ps = con.prepareStatement(query);
+                    ps.setString(1, category);
+                    res = ps.executeQuery();
+                    if (res.next()) {
+                        categoryId = res.getInt("cid");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 try {
                     query = "update ite";
                     ps = con.prepareStatement(query);
