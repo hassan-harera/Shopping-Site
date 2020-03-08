@@ -38,7 +38,6 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jRefresh = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jOrderId = new javax.swing.JTextField();
         jRefresh1 = new javax.swing.JButton();
 
         label1.setText("label1");
@@ -130,20 +129,6 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("order id:");
 
-        jOrderId.setBackground(new java.awt.Color(108, 122, 137));
-        jOrderId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jOrderId.setForeground(new java.awt.Color(228, 241, 254));
-        jOrderId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOrderIdActionPerformed(evt);
-            }
-        });
-        jOrderId.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jOrderIdKeyPressed(evt);
-            }
-        });
-
         jRefresh1.setBackground(new java.awt.Color(34, 167, 240));
         jRefresh1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jRefresh1.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,14 +151,12 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRefresh1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(1, 1, 1))))
                 .addGap(24, 24, 24))
         );
@@ -183,9 +166,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jRefresh1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -267,19 +248,6 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jLabel2MouseReleased
 
-    private void jOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jOrderIdActionPerformed
-
-    private void jOrderIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jOrderIdKeyPressed
-        char in = evt.getKeyChar();
-        if (Character.isDigit(in)) {
-            jOrderId.setEditable(true);
-        } else {
-            jOrderId.setEditable(false);
-        }
-    }//GEN-LAST:event_jOrderIdKeyPressed
-
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
         PreparedStatement ps;
         String oid = jOrderId.getText();
@@ -308,7 +276,7 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
                 ps.setDate(3, new Date(System.currentTimeMillis()));
                 ps.execute();
             } catch (SQLException ex) {
-                Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 query = "delete from customeritems where oid = ?";
@@ -333,7 +301,6 @@ public class StoreCustomerOreders extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
-    private javax.swing.JTextField jOrderId;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jRefresh;

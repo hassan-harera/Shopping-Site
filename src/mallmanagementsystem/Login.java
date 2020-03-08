@@ -264,7 +264,7 @@ public class Login extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -286,7 +286,7 @@ public class Login extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SignupForm.class
+            Logger.getLogger(Signup.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -321,7 +321,7 @@ public class Login extends javax.swing.JFrame {
                 return false;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;

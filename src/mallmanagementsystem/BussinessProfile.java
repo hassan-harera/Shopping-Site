@@ -71,7 +71,7 @@ public class BussinessProfile extends javax.swing.JFrame {
         jManage.setBackground(new java.awt.Color(34, 167, 240));
         jManage.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jManage.setForeground(new java.awt.Color(255, 255, 255));
-        jManage.setText("Manage Your Stores");
+        jManage.setText("Manage your stores");
         jManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jManageActionPerformed(evt);
@@ -91,7 +91,7 @@ public class BussinessProfile extends javax.swing.JFrame {
         jSetup.setBackground(new java.awt.Color(34, 167, 240));
         jSetup.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSetup.setForeground(new java.awt.Color(255, 255, 255));
-        jSetup.setText("Setup new Store");
+        jSetup.setText("Setup new store");
         jSetup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSetupActionPerformed(evt);
@@ -101,7 +101,7 @@ public class BussinessProfile extends javax.swing.JFrame {
         jNotifications.setBackground(new java.awt.Color(34, 167, 240));
         jNotifications.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jNotifications.setForeground(new java.awt.Color(255, 255, 255));
-        jNotifications.setText("Show Notifications");
+        jNotifications.setText("Show notifications");
         jNotifications.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNotificationsActionPerformed(evt);

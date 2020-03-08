@@ -169,13 +169,13 @@ public class ChooseSignup extends javax.swing.JFrame {
 
     private void jPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPersonalActionPerformed
         this.dispose();
-        new SignupForm(false).setVisible(true);
+        new Signup(false).setVisible(true);
     }//GEN-LAST:event_jPersonalActionPerformed
 
     private void jBusinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBusinessActionPerformed
 
         this.dispose();
-        new SignupForm(true).setVisible(true);
+        new Signup(true).setVisible(true);
     }//GEN-LAST:event_jBusinessActionPerformed
 
 

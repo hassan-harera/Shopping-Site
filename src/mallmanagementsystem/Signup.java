@@ -8,12 +8,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class SignupForm extends javax.swing.JFrame {
+public class Signup extends javax.swing.JFrame {
 
     Boolean isowner;
     private Connection con = null;
 
-    public SignupForm(Boolean iso) {
+    public Signup(Boolean iso) {
         con = MyConnection.con();
         isowner = iso;
         initComponents();
@@ -332,7 +332,7 @@ public class SignupForm extends javax.swing.JFrame {
                 ps.setBoolean(5, false);
                 ps.execute();
             } catch (SQLException ex) {
-                Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (isowner) {
                 query = "insert into owner(uname,oname,telephone,email) values (?,?,?,?);";
@@ -346,7 +346,7 @@ public class SignupForm extends javax.swing.JFrame {
                     ps.execute();
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
 
@@ -363,7 +363,7 @@ public class SignupForm extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "New User Was Added");
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -415,7 +415,7 @@ public class SignupForm extends javax.swing.JFrame {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;

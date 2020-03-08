@@ -107,7 +107,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jSellHistory.setBackground(new java.awt.Color(34, 167, 240));
         jSellHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jSellHistory.setForeground(new java.awt.Color(255, 255, 255));
-        jSellHistory.setText("View Store Sell History");
+        jSellHistory.setText("View store sell history");
         jSellHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSellHistoryActionPerformed(evt);
@@ -127,7 +127,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jPreferences.setBackground(new java.awt.Color(34, 167, 240));
         jPreferences.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPreferences.setForeground(new java.awt.Color(255, 255, 255));
-        jPreferences.setText("View Preferences List");
+        jPreferences.setText("View preferences list");
         jPreferences.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPreferencesActionPerformed(evt);
@@ -137,7 +137,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jTerminate.setBackground(new java.awt.Color(34, 167, 240));
         jTerminate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTerminate.setForeground(new java.awt.Color(255, 255, 255));
-        jTerminate.setText("Terminate the Rent");
+        jTerminate.setText("Terminate the rent");
         jTerminate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTerminateActionPerformed(evt);
@@ -147,7 +147,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jVisitHistory.setBackground(new java.awt.Color(34, 167, 240));
         jVisitHistory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jVisitHistory.setForeground(new java.awt.Color(255, 255, 255));
-        jVisitHistory.setText("View Store Visit History");
+        jVisitHistory.setText("View store visit history");
         jVisitHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jVisitHistoryActionPerformed(evt);
@@ -177,7 +177,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jItems.setBackground(new java.awt.Color(34, 167, 240));
         jItems.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jItems.setForeground(new java.awt.Color(255, 255, 255));
-        jItems.setText("View Store Items");
+        jItems.setText("View store items");
         jItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jItemsActionPerformed(evt);
@@ -187,7 +187,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         jOrder.setBackground(new java.awt.Color(34, 167, 240));
         jOrder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jOrder.setForeground(new java.awt.Color(255, 255, 255));
-        jOrder.setText("View Order List");
+        jOrder.setText("View order list");
         jOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jOrderActionPerformed(evt);
@@ -375,7 +375,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Store Is Not Found");
         } else {
             int sid = Integer.parseInt(name);
-            new StoreItems(sid,Username).setVisible(true);
+            new StoreItemList(sid,Username).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jItemsActionPerformed

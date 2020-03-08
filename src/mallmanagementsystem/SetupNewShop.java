@@ -88,6 +88,11 @@ public class SetupNewShop extends javax.swing.JFrame {
         jArea.setBackground(new java.awt.Color(108, 122, 137));
         jArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jArea.setForeground(new java.awt.Color(228, 241, 254));
+        jArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAreaActionPerformed(evt);
+            }
+        });
         jArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jAreaKeyPressed(evt);
@@ -266,6 +271,10 @@ public class SetupNewShop extends javax.swing.JFrame {
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MouseReleased
+
+    private void jAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAreaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAreaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

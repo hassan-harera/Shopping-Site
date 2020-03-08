@@ -75,7 +75,7 @@ public class HomePage extends javax.swing.JFrame {
         jlogin1.setBackground(new java.awt.Color(19, 15, 64));
         jlogin1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jlogin1.setForeground(new java.awt.Color(255, 255, 255));
-        jlogin1.setText("Enter As A Guest");
+        jlogin1.setText("Enter as a guest");
         jlogin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jlogin1ActionPerformed(evt);

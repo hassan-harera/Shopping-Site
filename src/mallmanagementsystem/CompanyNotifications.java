@@ -285,7 +285,7 @@ public class CompanyNotifications extends javax.swing.JFrame {
                 ps.setInt(2, Integer.parseInt(mid));
                 ps.executeUpdate();
             } catch (NumberFormatException | SQLException ex) {
-                Logger.getLogger(SignupForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jSellHistory1ActionPerformed
