@@ -40,7 +40,7 @@ public class StoreItemList extends javax.swing.JFrame {
         jItems = new javax.swing.JButton();
         jOrder = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jItems1 = new javax.swing.JButton();
+        jRefresh = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jModify = new javax.swing.JButton();
@@ -143,13 +143,13 @@ public class StoreItemList extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Amount:");
 
-        jItems1.setBackground(new java.awt.Color(34, 167, 240));
-        jItems1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jItems1.setForeground(new java.awt.Color(255, 255, 255));
-        jItems1.setText("Refresh");
-        jItems1.addActionListener(new java.awt.event.ActionListener() {
+        jRefresh.setBackground(new java.awt.Color(34, 167, 240));
+        jRefresh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        jRefresh.setText("Refresh");
+        jRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jItems1ActionPerformed(evt);
+                jRefreshActionPerformed(evt);
             }
         });
 
@@ -250,7 +250,7 @@ public class StoreItemList extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jItems1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jItems, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -313,7 +313,7 @@ public class StoreItemList extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jItems)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jItems1)
+                        .addComponent(jRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBack)))
                 .addGap(22, 22, 22))
@@ -469,9 +469,9 @@ public class StoreItemList extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jOrderActionPerformed
 
-    private void jItems1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItems1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jItems1ActionPerformed
+    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
+        getItems();
+    }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jItemIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jItemIdKeyPressed
         char in = evt.getKeyChar();
@@ -566,7 +566,6 @@ public class StoreItemList extends javax.swing.JFrame {
     private javax.swing.JButton jDelete;
     private javax.swing.JTextField jItemId;
     private javax.swing.JButton jItems;
-    private javax.swing.JButton jItems1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -581,6 +580,7 @@ public class StoreItemList extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jPrice;
+    private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
@@ -706,7 +706,7 @@ public class StoreItemList extends javax.swing.JFrame {
             ps.setDouble(1, price);
             ps.setInt(2, itemId);
             ps.executeUpdate();
-            
+
             query = "update item set price = ? where iiid = ?";
             ps = con.prepareStatement(query);
             ps.setDouble(1, price);
