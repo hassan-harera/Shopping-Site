@@ -393,61 +393,51 @@ public class StoreItemList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Add the amount of item");
         } else if (price == null) {
             JOptionPane.showMessageDialog(null, "write the item price");
-        } else if (!checkItemIsFound(name)) {
-            JOptionPane.showMessageDialog(null, "This item is already found");
         } else {
             PreparedStatement ps;
-            String query = "insert into category(cname) VALUES (?);";
+            String query = "INSERT INTO category (cname) SELECT * FROM (SELECT 'juice') AS tmp WHERE NOT EXISTS ( SELECT cname FROM category WHERE cname = ? ) LIMIT 1;";
             try {
                 ps = con.prepareStatement(query);
                 ps.setString(1, category);
-                ps.executeUpdate();
-                query = "select cid from category where cname = ?;";
-                try {
-                    ps = con.prepareStatement(query);
-                    ps.setString(1, category);
-                    res = ps.executeQuery();
-                    if (res.next()) {
-                        categoryId = res.getInt("cid");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                query = "insert into item(iname,cid,price) VALUES (?,?,?);";
-                try {
-                    ps = con.prepareStatement(query);
-                    ps.setString(1, name);
-                    ps.setInt(2, categoryId);
-                    ps.setDouble(3, price);
-                    ps.execute();
+                ps.execute();
 
-                    query = "select iiid from item where iname = ?;";
-                    try {
-                        ps = con.prepareStatement(query);
-                        ps.setString(1, name);
-                        res = ps.executeQuery();
-                        if (res.next()) {
-                            itemId = res.getInt("iiid");
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    query = "insert into shopitems(iid,amount,price,date) VALUES (?,?,?,?) where sid=?;";
-                    try {
-                        ps = con.prepareStatement(query);
-                        ps.setInt(1, itemId);
-                        ps.setInt(2, amount);
-                        ps.setDouble(3, price);
-                        ps.setDate(4, Date.valueOf(LocalDate.now()));
-                        ps.setInt(5, storeId);
-                        ps.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "New Item Was Added");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                query = "select cid from category where cname = ?;";
+                ps = con.prepareStatement(query);
+                ps.setString(1, category);
+                res = ps.executeQuery();
+                if (res.next()) {
+                    categoryId = res.getInt("cid");
                 }
+
+                query = "insert into item(iname,cid,price) VALUES (?,?,?);";
+                ps = con.prepareStatement(query);
+                ps.setString(1, name);
+                ps.setInt(2, categoryId);
+                ps.setDouble(3, price);
+                ps.execute();
+
+                query = "select iiid from item where iname = ?;";
+                ps = con.prepareStatement(query);
+
+                ps.setString(1, name);
+                res = ps.executeQuery();
+                if (res.next()) {
+                    itemId = res.getInt("iiid");
+                }
+
+                query = "insert into shopitems(iid,amount,price,date,sid) VALUES (?,?,?,?,?);";
+                ps = con.prepareStatement(query);
+
+                ps.setInt(1, itemId);
+                ps.setInt(2, amount);
+                ps.setDouble(3, price);
+                ps.setDate(4, Date.valueOf(LocalDate.now()));
+                ps.setInt(5, storeId);
+
+                ps.execute();
+
+                JOptionPane.showMessageDialog(null, "New Item Was Added");
+
             } catch (SQLException ex) {
                 Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -511,45 +501,43 @@ public class StoreItemList extends javax.swing.JFrame {
     }//GEN-LAST:event_jPriceKeyPressed
 
     private void jDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteActionPerformed
-        // TODO add your handling code here:
+        String itemId = jItemId.getText();
+        Double price = Double.parseDouble(jAmount.getText());
+        if (itemId == null) {
+            JOptionPane.showMessageDialog(null, "Add an id");
+        } else if (!checkItemIsFound(Integer.parseInt(itemId))) {
+            JOptionPane.showMessageDialog(null, "This item is not found");
+        } else {
+            deleteItem(Integer.parseInt(itemId));
+        }
     }//GEN-LAST:event_jDeleteActionPerformed
 
     private void jModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModifyActionPerformed
         Integer itemId = Integer.parseInt(jItemId.getText());
         String category = jCategory.getText();
         Integer amount = Integer.parseInt(jAmount.getText());
-        Integer categoryId = 0;
-        Double price = Double.parseDouble(jAmount.getText());
+        Double price = Double.parseDouble(jPrice.getText());
+        String name = jPrice.getText();
         PreparedStatement ps;
         String query = "";
         if (itemId == null) {
             JOptionPane.showMessageDialog(null, "write the item id which you want to modify it");
         } else {
+            if (name != null) {
+                modifyName(itemId, name);
+            }
             if (category != null) {
-                query = "select cid from category where cname = ?;";
-                try {
-                    ps = con.prepareStatement(query);
-                    ps.setString(1, category);
-                    res = ps.executeQuery();
-                    if (res.next()) {
-                        categoryId = res.getInt("cid");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    query = "update ite";
-                    ps = con.prepareStatement(query);
-                    ps.setInt(1, Integer.parseInt(sid));
-                    if (ps.executeQuery().next()) {
-                    }
-                } catch (SQLException | NumberFormatException ex) {
-                    Logger.getLogger(StoreItemList.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
+                modifyCategory(itemId, category);
+            }
+            if (amount != null) {
+                modifyAmount(itemId, amount);
+            }
+            if (price != null) {
+                modifyPrice(itemId, price);
             }
         }
     }//GEN-LAST:event_jModifyActionPerformed
+
     private boolean checkShopID(String sid) {
 
         PreparedStatement ps;
@@ -615,9 +603,132 @@ public class StoreItemList extends javax.swing.JFrame {
     }
 
     private boolean checkItemIsFound(Integer itemId) {
+        PreparedStatement ps;
+        try {
+            String query = "select iiid from item where iiid = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, itemId);
+            res = ps.executeQuery();
+            if (res.next()) {
+                return true;
+            }
+        } catch (SQLException | NumberFormatException ex) {
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
-    private boolean checkItemIsFound(String name) {
+    private void modifyCategory(Integer itemId, String category) {
+        PreparedStatement ps;
+        int categoryId = 0;
+        String query = "select cid from category where cname = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, category);
+            res = ps.executeQuery();
+            if (res.next()) {
+                categoryId = res.getInt("cid");
+                try {
+                    query = "update item set cid = ? where iiid";
+                    ps = con.prepareStatement(query);
+                    ps.setInt(1, categoryId);
+                    ps.setInt(2, itemId);
+                    ps.executeUpdate();
+                } catch (SQLException | NumberFormatException ex) {
+                    Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                query = "insert into ctegory(cname) VALUES (?);";
+                try {
+                    ps = con.prepareStatement(query);
+                    ps.setString(1, category);
+                    ps.execute();
+                    query = "select cid from category where cname = ?;";
+                    try {
+                        ps = con.prepareStatement(query);
+                        ps.setString(1, category);
+                        res = ps.executeQuery();
+                        if (res.next()) {
+                            categoryId = res.getInt("cid");
+                        }
+                        try {
+                            query = "update item set cid = ? where iiid = ?";
+                            ps = con.prepareStatement(query);
+                            ps.setInt(1, categoryId);
+                            ps.setInt(2, itemId);
+                            ps.executeUpdate();
+                        } catch (SQLException | NumberFormatException ex) {
+                            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    private void modifyName(Integer itemId, String name) {
+        PreparedStatement ps;
+        try {
+            String query = "update item set iname = ? where iiid = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+        } catch (SQLException | NumberFormatException ex) {
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void modifyAmount(Integer itemId, Integer amount) {
+        PreparedStatement ps;
+        try {
+            String query = "update shopitems set amount = ? where iiid = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, amount);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+        } catch (SQLException | NumberFormatException ex) {
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void modifyPrice(Integer itemId, Double price) {
+        PreparedStatement ps;
+        try {
+            String query = "update shopitems set iprice = ? where iid = ?";
+            ps = con.prepareStatement(query);
+            ps.setDouble(1, price);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+            
+            query = "update item set price = ? where iiid = ?";
+            ps = con.prepareStatement(query);
+            ps.setDouble(1, price);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void deleteItem(int itemId) {
+        PreparedStatement ps;
+        try {
+            String query = "delete from shopitems where iid = ? and sid = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, itemId);
+            ps.setInt(2, storeId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
