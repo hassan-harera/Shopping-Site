@@ -78,9 +78,9 @@ public class CustomerProfile extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
         jOrders.setBackground(new java.awt.Color(34, 167, 240));
-        jOrders.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jOrders.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jOrders.setForeground(new java.awt.Color(255, 255, 255));
-        jOrders.setText("Your orders");
+        jOrders.setText("Your order list");
         jOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jOrdersActionPerformed(evt);
@@ -88,7 +88,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         });
 
         jLogout.setBackground(new java.awt.Color(242, 38, 19));
-        jLogout.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLogout.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLogout.setForeground(new java.awt.Color(255, 255, 255));
         jLogout.setText("Log out");
         jLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +98,9 @@ public class CustomerProfile extends javax.swing.JFrame {
         });
 
         jMallShops.setBackground(new java.awt.Color(34, 167, 240));
-        jMallShops.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jMallShops.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jMallShops.setForeground(new java.awt.Color(255, 255, 255));
-        jMallShops.setText("Browse mall shops");
+        jMallShops.setText("Browse mall stores");
         jMallShops.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMallShopsActionPerformed(evt);
@@ -108,9 +108,9 @@ public class CustomerProfile extends javax.swing.JFrame {
         });
 
         jAddGuestbook.setBackground(new java.awt.Color(34, 167, 240));
-        jAddGuestbook.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jAddGuestbook.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jAddGuestbook.setForeground(new java.awt.Color(255, 255, 255));
-        jAddGuestbook.setText("Send feedBack");
+        jAddGuestbook.setText("Send feedback");
         jAddGuestbook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAddGuestbookActionPerformed(evt);
@@ -118,9 +118,9 @@ public class CustomerProfile extends javax.swing.JFrame {
         });
 
         jShoppingCart.setBackground(new java.awt.Color(34, 167, 240));
-        jShoppingCart.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jShoppingCart.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jShoppingCart.setForeground(new java.awt.Color(255, 255, 255));
-        jShoppingCart.setText("Shopping cart");
+        jShoppingCart.setText("You shopping cart");
         jShoppingCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jShoppingCartActionPerformed(evt);
@@ -139,7 +139,7 @@ public class CustomerProfile extends javax.swing.JFrame {
                     .addComponent(jOrders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jShoppingCart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,15 +163,13 @@ public class CustomerProfile extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose)
                 .addGap(21, 21, 21))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +188,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,9 +227,8 @@ public class CustomerProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jMallShopsActionPerformed
 
     private void jAddGuestbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGuestbookActionPerformed
-
-        this.dispose();
         new CustomerFeedback(UserName, CustomerId).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jAddGuestbookActionPerformed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
@@ -239,7 +236,8 @@ public class CustomerProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jShoppingCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShoppingCartActionPerformed
-        // TODO add your handling code here:
+        new CustomerCart(UserName).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jShoppingCartActionPerformed
 
 

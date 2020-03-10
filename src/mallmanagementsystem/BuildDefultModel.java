@@ -23,7 +23,8 @@ public class BuildDefultModel {
         while (rs.next()) {
             Vector<Object> vector = new Vector<>();
             for (int i = 1; i <= c; i++) {
-                vector.add(rs.getObject(i));
+                Object nex = rs.getObject(i);
+                vector.add(nex == null ? "Not Known" : nex);
             }
             data.add(vector);
         }
