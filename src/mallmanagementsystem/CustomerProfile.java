@@ -13,13 +13,11 @@ public class CustomerProfile extends javax.swing.JFrame {
     private int CustomerId;
 
     public CustomerProfile(String uname) {
-
         this.UserName = uname;
         con = MyConnection.con();
         getCustomerId();
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -199,30 +197,25 @@ public class CustomerProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
-
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
-
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
-        dispose();
         new HomePage().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLogoutActionPerformed
 
     private void jOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrdersActionPerformed
-
+        new CustomerOrders(UserName).setVisible(true);
         dispose();
-        new CustomerOrders(UserName, CustomerId).setVisible(true);
     }//GEN-LAST:event_jOrdersActionPerformed
 
     private void jMallShopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMallShopsActionPerformed
-        new CustomerShopping().setVisible(true);
+        new CustomerShopping(UserName).setVisible(true);
         dispose();
     }//GEN-LAST:event_jMallShopsActionPerformed
 
@@ -236,7 +229,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jShoppingCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShoppingCartActionPerformed
-        new CustomerCart(UserName,CustomerId).setVisible(true);
+        new CustomerCart(UserName, CustomerId).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jShoppingCartActionPerformed
 

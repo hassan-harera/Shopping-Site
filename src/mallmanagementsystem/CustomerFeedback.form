@@ -163,7 +163,7 @@
                           </Group>
                           <Component id="jMessage" min="-2" pref="208" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
