@@ -22,7 +22,6 @@ public class CompanyStoreList extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         companyId = setId();
         getStoreList();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -225,7 +224,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jStoreId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,7 +270,8 @@ public class CompanyStoreList extends javax.swing.JFrame {
                     .addComponent(jLabelClose)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,9 +282,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -456,7 +454,7 @@ public class CompanyStoreList extends javax.swing.JFrame {
         String query = "SELECT O.sid, O.sname , O.sarea , O.budget, COUNT(C.vdate), SUM(P.totalprice) FROM shop O JOIN sellhistory P ON P.sid = O.sid JOIN customervisit C ON C.sid = O.sid where O.oid = ? order by O.sid;";
         try {
             ps = con.prepareStatement(query);
-            ps.setInt(1, ID);
+            ps.setInt(1, companyId);
             res = ps.executeQuery();
             String[] strs = {"Shop ID", "Shop Name", "Shop Area", "Rent Value", "number of visits", "Total Sell"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));

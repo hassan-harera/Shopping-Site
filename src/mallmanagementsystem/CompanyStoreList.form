@@ -29,10 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -76,6 +73,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -149,15 +147,13 @@
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="jStoreId" pref="68" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jBack" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTerminate" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jItems" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jOrders" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPreferences" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jVisitHistory" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jSellHistory" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jBack" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTerminate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jItems" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jOrders" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPreferences" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jVisitHistory" alignment="0" pref="200" max="32767" attributes="0"/>
+                          <Component id="jSellHistory" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
@@ -171,7 +167,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="71" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jStoreId" alignment="3" min="-2" max="-2" attributes="0"/>

@@ -80,7 +80,7 @@ public class AddShop extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel4.setText("Shop Area:");
+        jLabel4.setText("Shop area:");
 
         jArea.setBackground(new java.awt.Color(108, 122, 137));
         jArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -103,7 +103,7 @@ public class AddShop extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel6.setText("Shop Name:");
+        jLabel6.setText("Shop name:");
 
         jName.setBackground(new java.awt.Color(108, 122, 137));
         jName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -223,7 +223,7 @@ public class AddShop extends javax.swing.JFrame {
                 ps.setString(1, name);
                 ps.setInt(2, Integer.parseInt(area));
                 ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "New Shop Was Added");
+                JOptionPane.showMessageDialog(null, "New Store Was Added");
             } catch (SQLException ex) {
                 Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
             }
