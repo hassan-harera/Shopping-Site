@@ -14,13 +14,13 @@ public class CustomerCart extends javax.swing.JFrame {
     private final int customerId;
     private ResultSet res;
 
-    public CustomerCart(String uname) {
+    public CustomerCart(String uname, int cid) {
         con = MyConnection.con();
         userName = uname;
-        customerId = getCustomerId();
-        getCart();
+        customerId = cid;
         initComponents();
         this.setLocationRelativeTo(null);
+        getCart();
     }
 
     @SuppressWarnings("unchecked")
@@ -150,7 +150,7 @@ public class CustomerCart extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -169,7 +169,7 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,17 +245,17 @@ public class CustomerCart extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelActionPerformed
-        Integer orderId = Integer.parseInt(jOrderId.getText());
-        if (orderId == null) {
+        String orderId = jOrderId.getText();
+        if (orderId.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter an order id");
-        } else if (!checkOrderId(orderId)) {
+        } else if (!checkOrderId(Integer.parseInt(orderId))) {
             JOptionPane.showMessageDialog(null, "this.order is not existed");
         } else {
             PreparedStatement ps;
             String query = "delete from customeritems where oid = ?";
             try {
                 ps = con.prepareStatement(query);
-                ps.setInt(1, orderId);
+                ps.setInt(1, Integer.parseInt(orderId));
                 ps.executeUpdate();
             } catch (SQLException | NumberFormatException ex) {
                 Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);
@@ -277,23 +277,24 @@ public class CustomerCart extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmActionPerformed
-        Integer orderId = Integer.parseInt(jOrderId.getText());
-        if (orderId == null) {
+        String orderId = jOrderId.getText();
+        if (orderId.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter an order id");
-        } else if (!checkOrderId(orderId)) {
+        } else if (!checkOrderId(Integer.parseInt(orderId))) {
             JOptionPane.showMessageDialog(null, "this.order is not existed");
         } else {
             PreparedStatement ps;
             String query = "update customeritems set ischeckedout = 1 where oid = ?";
             try {
                 ps = con.prepareStatement(query);
-                ps.setInt(1, orderId);
+                ps.setInt(1, Integer.parseInt(orderId));
                 ps.executeUpdate();
             } catch (SQLException | NumberFormatException ex) {
                 Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jConfirmActionPerformed
+
     private boolean checkOrderId(int oid) {
         PreparedStatement ps;
         String query = "select oid from customeritems where oid=?";
@@ -327,7 +328,7 @@ public class CustomerCart extends javax.swing.JFrame {
 
     private void getCart() {
         PreparedStatement ps;
-        String query = "SELECT O.oid, S.sname , I.iname , O.amount , O.totalprice, O.date FROM customeritems O JOIN Item I ON I.iiid = O.iid JOIN shop S ON O.sid = I.sid where O.ischeckedout = 0 order by O.date;";
+        String query = "SELECT O.oid, S.sname , I.iname , O.amount , O.totalprice, O.date FROM customeritems O JOIN Item I ON I.iiid = O.iid JOIN shop S ON O.sid = S.sid where O.ischeckedout = 0 order by O.date;";
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
@@ -337,21 +338,5 @@ public class CustomerCart extends javax.swing.JFrame {
             Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable3);
-    }
-
-    private int getCustomerId() {
-        PreparedStatement ps;
-        String query = "SELECT cid FROM customer where uname = ?;";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setString(1, userName);
-            res = ps.executeQuery();
-            if (res.next()) {
-                return res.getInt("cid");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 }

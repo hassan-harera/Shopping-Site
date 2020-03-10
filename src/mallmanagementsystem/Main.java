@@ -23,7 +23,7 @@ public class Main {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AvailableStoreList("hassa").setVisible(true);
+                new CustomerCart("hassa",0).setVisible(true);
             }
         });
     }

@@ -236,7 +236,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jShoppingCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShoppingCartActionPerformed
-        new CustomerCart(UserName).setVisible(true);
+        new CustomerCart(UserName,CustomerId).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jShoppingCartActionPerformed
 
