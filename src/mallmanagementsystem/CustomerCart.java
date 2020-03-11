@@ -247,7 +247,7 @@ public class CustomerCart extends javax.swing.JFrame {
         if (orderId.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter an order id");
         } else if (!checkOrderId(Integer.parseInt(orderId))) {
-            JOptionPane.showMessageDialog(null, "this.order is not existed");
+            JOptionPane.showMessageDialog(null, "this.order is not existed in your cart");
         } else {
             PreparedStatement ps;
             String query = "delete from customeritems where oid = ?";
