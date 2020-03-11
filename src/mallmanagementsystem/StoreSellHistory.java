@@ -250,11 +250,11 @@ public class StoreSellHistory extends javax.swing.JFrame {
             ps.setInt(1, shopId);
             res = ps.executeQuery();
             String[] strs = {"Customer Name", "Shop Name", "Item Name", "Amount", "Total Price", "Sell Date"};
-            jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+            jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
             
         } catch (SQLException ex) {
             Logger.getLogger(StoreSellHistory.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable3);
     }
 }
