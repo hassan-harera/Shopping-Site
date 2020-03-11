@@ -43,9 +43,6 @@
           <Color blue="24" green="ca" red="f9" type="rgb"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseReleased"/>
-      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -109,6 +106,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mall Store List"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMin">
           <Properties>
@@ -142,8 +142,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" pref="85" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jShopId" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="jStoreId" min="-2" pref="76" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="jRefresh" min="-2" pref="209" max="-2" attributes="0"/>
@@ -172,7 +172,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jShopId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jStoreId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="jAddShop" min="-2" max="-2" attributes="0"/>
@@ -198,10 +198,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f1" green="f0" red="ec" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Shop ID:"/>
+                <Property name="text" type="java.lang.String" value="&#x64d;Store Id:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jShopId">
+            <Component class="javax.swing.JTextField" name="jStoreId">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="89" green="7a" red="6c" type="rgb"/>
@@ -214,8 +214,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jShopIdActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jShopIdKeyPressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jStoreIdActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jStoreIdKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jSellHistory">

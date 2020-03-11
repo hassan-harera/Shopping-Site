@@ -41,11 +41,6 @@ public class GuestBookMessages extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel1MouseReleased(evt);
-            }
-        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,18 +73,13 @@ public class GuestBookMessages extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(19, 15, 64));
 
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Message ID:");
 
         jMessageId.setBackground(new java.awt.Color(108, 122, 137));
         jMessageId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jMessageId.setForeground(new java.awt.Color(228, 241, 254));
-        jMessageId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMessageIdActionPerformed(evt);
-            }
-        });
         jMessageId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jMessageIdKeyPressed(evt);
@@ -185,11 +175,11 @@ public class GuestBookMessages extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jMessageId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jMark)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jMarkAll)
@@ -284,10 +274,6 @@ public class GuestBookMessages extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMarkActionPerformed
 
-    private void jMessageIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMessageIdActionPerformed
-
-    }//GEN-LAST:event_jMessageIdActionPerformed
-
     private void jMarkAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMarkAllActionPerformed
 
         PreparedStatement ps;
@@ -316,9 +302,6 @@ public class GuestBookMessages extends javax.swing.JFrame {
         jMessageId.setText("");
         getGuestBookMessages();
     }//GEN-LAST:event_jRefreshActionPerformed
-
-    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-    }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());

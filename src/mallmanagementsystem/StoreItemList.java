@@ -36,8 +36,6 @@ public class StoreItemList extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jBack = new javax.swing.JButton();
         jAdd = new javax.swing.JButton();
-        jItems = new javax.swing.JButton();
-        jOrder = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jRefresh = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -110,26 +108,6 @@ public class StoreItemList extends javax.swing.JFrame {
         jAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAddActionPerformed(evt);
-            }
-        });
-
-        jItems.setBackground(new java.awt.Color(34, 167, 240));
-        jItems.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jItems.setForeground(new java.awt.Color(255, 255, 255));
-        jItems.setText("View store items");
-        jItems.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jItemsActionPerformed(evt);
-            }
-        });
-
-        jOrder.setBackground(new java.awt.Color(34, 167, 240));
-        jOrder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jOrder.setForeground(new java.awt.Color(255, 255, 255));
-        jOrder.setText("View order list");
-        jOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOrderActionPerformed(evt);
             }
         });
 
@@ -241,12 +219,10 @@ public class StoreItemList extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jItems, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -273,10 +249,10 @@ public class StoreItemList extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(13, Short.MAX_VALUE)
+                        .addContainerGap(19, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(71, 71, 71)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jItemId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -300,16 +276,13 @@ public class StoreItemList extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jAdd)
                             .addComponent(jModify))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jOrder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jItems)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBack)))
+                        .addComponent(jBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(22, 22, 22))
         );
 
@@ -446,23 +419,6 @@ public class StoreItemList extends javax.swing.JFrame {
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jLabel2MouseReleased
 
-    private void jItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jItemsActionPerformed
-
-    private void jOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderActionPerformed
-        String name = jItem.getText();
-        if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Store ID");
-        } else if (!checkShopID(name)) {
-            JOptionPane.showMessageDialog(null, "This Store Is Not Found");
-        } else {
-            int sid = Integer.parseInt(name);
-            new StoreCustomerOreders(sid, Username).setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jOrderActionPerformed
-
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
         getItems();
     }//GEN-LAST:event_jRefreshActionPerformed
@@ -559,7 +515,6 @@ public class StoreItemList extends javax.swing.JFrame {
     private javax.swing.JTextField jCategory;
     private javax.swing.JButton jDelete;
     private javax.swing.JTextField jItemId;
-    private javax.swing.JButton jItems;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -570,7 +525,6 @@ public class StoreItemList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JButton jModify;
     private javax.swing.JTextField jName;
-    private javax.swing.JButton jOrder;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jPrice;

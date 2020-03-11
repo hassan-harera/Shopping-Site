@@ -256,8 +256,8 @@ public class RentRequests extends javax.swing.JFrame {
     }//GEN-LAST:event_jRefuseActionPerformed
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-        this.dispose();
         new AdminProfile().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAcceptActionPerformed
@@ -363,9 +363,7 @@ public class RentRequests extends javax.swing.JFrame {
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return false;
-
     }
 
 
@@ -393,13 +391,11 @@ public class RentRequests extends javax.swing.JFrame {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
             String[] strs = {"Request ID", "Shop ID", "Request Date", "Shop Area", "Company Username", "Company Name", "Offer Budget"};
-            jTable1.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
+            jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
 
         } catch (SQLException ex) {
-            Logger.getLogger(RentRequests.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RentRequests.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable3);
     }
-
 }

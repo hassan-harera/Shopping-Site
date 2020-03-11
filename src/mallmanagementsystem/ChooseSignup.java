@@ -164,7 +164,6 @@ public class ChooseSignup extends javax.swing.JFrame {
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
 
         this.setState(JFrame.ICONIFIED);
-
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void JBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBackActionPerformed

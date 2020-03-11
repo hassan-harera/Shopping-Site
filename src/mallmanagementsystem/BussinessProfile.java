@@ -168,15 +168,11 @@ public class BussinessProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
-
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
-
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageActionPerformed
