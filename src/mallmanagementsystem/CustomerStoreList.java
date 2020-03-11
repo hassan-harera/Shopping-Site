@@ -7,13 +7,13 @@ import java.sql.*;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-public class CustomerShopping extends javax.swing.JFrame {
+public class CustomerStoreList extends javax.swing.JFrame {
 
     private final Connection con;
     private final String userName;
     private ResultSet res;
 
-    public CustomerShopping(String uname) {
+    public CustomerStoreList(String uname) {
         con = MyConnection.con();
         userName = uname;
         initComponents();
@@ -32,7 +32,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jStoreId = new javax.swing.JTextField();
-        jback = new javax.swing.JButton();
+        jBack = new javax.swing.JButton();
         jEnter = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -91,13 +91,13 @@ public class CustomerShopping extends javax.swing.JFrame {
             }
         });
 
-        jback.setBackground(new java.awt.Color(242, 38, 19));
-        jback.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
-        jback.setForeground(new java.awt.Color(255, 255, 255));
-        jback.setText("Back");
-        jback.addActionListener(new java.awt.event.ActionListener() {
+        jBack.setBackground(new java.awt.Color(242, 38, 19));
+        jBack.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbackActionPerformed(evt);
+                jBackActionPerformed(evt);
             }
         });
 
@@ -141,7 +141,7 @@ public class CustomerShopping extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jback, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,7 +161,7 @@ public class CustomerShopping extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jEnter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jback))
+                        .addComponent(jBack))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -211,10 +211,10 @@ public class CustomerShopping extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbackActionPerformed
+    private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
         new CustomerProfile(userName).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jbackActionPerformed
+    }//GEN-LAST:event_jBackActionPerformed
 
     private void jStoreIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStoreIdActionPerformed
         // TODO add your handling code here:
@@ -231,9 +231,9 @@ public class CustomerShopping extends javax.swing.JFrame {
     private void jEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnterActionPerformed
         String storeId = jStoreId.getText();
         if (storeId.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please Enter Oredr ID");
+            JOptionPane.showMessageDialog(null, "Please enter the oredr id");
         } else if (!checkStoreId(storeId)) {
-            JOptionPane.showMessageDialog(null, "This Order Is Not Found");
+            JOptionPane.showMessageDialog(null, "This order is not existed in the store list");
         } else {
             new StoreView(Integer.parseInt(storeId),userName).setVisible(true);
             this.dispose();
@@ -252,8 +252,8 @@ public class CustomerShopping extends javax.swing.JFrame {
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MouseReleased
+   
     private boolean checkStoreId(String sid) {
-
         PreparedStatement ps;
         String query = "select sid from shop where sid=?";
         try {
@@ -263,13 +263,14 @@ public class CustomerShopping extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(CustomerShopping.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerStoreList.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBack;
     private javax.swing.JButton jEnter;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -280,20 +281,18 @@ public class CustomerShopping extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jStoreId;
     private javax.swing.JTable jTable3;
-    private javax.swing.JButton jback;
     // End of variables declaration//GEN-END:variables
 
     private void getStoreList() {
-
         PreparedStatement ps;
         String query = "SELECT O.sid, O.sname , P.oname FROM shop O JOIN owner P ON P.oid = O.sid where O.oid is not null order by O.sid;";
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
-            String[] strs = {"Shop ID", "Shop Name", "Company Name"};
+            String[] strs = {"Store ID", "Store Name", "Company Name"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerShopping.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerStoreList.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable3);
     }

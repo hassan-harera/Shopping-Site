@@ -43,9 +43,6 @@
           <Color blue="24" green="ca" red="f9" type="rgb"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseReleased"/>
-      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -106,6 +103,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Your Cart"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMin">
           <Properties>
@@ -163,7 +163,7 @@
                               <Component id="jScrollPane2" pref="340" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jOrderId" alignment="3" min="-2" max="-2" attributes="0"/>

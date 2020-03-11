@@ -22,7 +22,6 @@ public class StoreItemList extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         getItems();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -58,11 +57,6 @@ public class StoreItemList extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel1MouseReleased(evt);
-            }
-        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -325,7 +319,7 @@ public class StoreItemList extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -363,42 +357,41 @@ public class StoreItemList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-
         new BussinessProfile(Username).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddActionPerformed
         String name = jName.getText();
         String category = jCategory.getText();
-        Integer amount = Integer.parseInt(jAmount.getText());
-        Integer categoryId = 0;
-        Integer itemId = 0;
-        Double price = Double.parseDouble(jAmount.getText());
+        String amount = jAmount.getText();
+        String price = jPrice.getText();
+
+        int categoryId = 0;
+        int itemId = 0;
         if (name.equals("")) {
             JOptionPane.showMessageDialog(null, "Add a name");
         } else if (category.equals("")) {
             JOptionPane.showMessageDialog(null, "Add the item category");
-        } else if (amount == null) {
+        } else if (amount.equals("")) {
             JOptionPane.showMessageDialog(null, "Add the amount of item");
         } else if (price == null) {
-            JOptionPane.showMessageDialog(null, "write the item price");
+            JOptionPane.showMessageDialog(null, "Add the item price");
         } else {
             PreparedStatement ps;
-            String query = "INSERT INTO category (cname) SELECT * FROM (SELECT 'juice') AS tmp WHERE NOT EXISTS ( SELECT cname FROM category WHERE cname = ? ) LIMIT 1;";
+            String query = "INSERT INTO category (cname) SELECT * FROM (SELECT ?) AS tmp WHERE NOT EXISTS ( SELECT cname FROM category WHERE cname = ? ) LIMIT 1;";
             try {
                 ps = con.prepareStatement(query);
                 ps.setString(1, category);
+                ps.setString(2, category);
                 ps.execute();
 
                 query = "select cid from category where cname = ?;";
@@ -409,11 +402,13 @@ public class StoreItemList extends javax.swing.JFrame {
                     categoryId = res.getInt("cid");
                 }
 
-                query = "insert into item(iname,cid,price) VALUES (?,?,?);";
+                query = "INSERT INTO item (iname,cid,price) SELECT * FROM (SELECT ?,?,?) AS tmp WHERE NOT EXISTS ( SELECT iname FROM item WHERE iname = ? ) LIMIT 1;";
                 ps = con.prepareStatement(query);
                 ps.setString(1, name);
                 ps.setInt(2, categoryId);
-                ps.setDouble(3, price);
+                ps.setDouble(3, Double.parseDouble(price));
+                ps.setString(4, name);
+                ps.setString(5, name);
                 ps.execute();
 
                 query = "select iiid from item where iname = ?;";
@@ -425,28 +420,27 @@ public class StoreItemList extends javax.swing.JFrame {
                     itemId = res.getInt("iiid");
                 }
 
-                query = "insert into shopitems(iid,amount,price,date,sid) VALUES (?,?,?,?,?);";
+                query = "INSERT INTO shopitems (iid,amount,price,date,sid) SELECT * FROM (SELECT ?,?,?,?,?) AS tmp WHERE NOT EXISTS (SELECT iid FROM shopitems WHERE iid = ? and sid = ?) LIMIT 1;";
                 ps = con.prepareStatement(query);
 
                 ps.setInt(1, itemId);
-                ps.setInt(2, amount);
-                ps.setDouble(3, price);
+                ps.setInt(2, Integer.parseInt(amount));
+                ps.setDouble(3, Double.parseDouble(price));
                 ps.setDate(4, Date.valueOf(LocalDate.now()));
                 ps.setInt(5, storeId);
+                ps.setDouble(6, itemId);
+                ps.setDouble(7, storeId);
 
                 ps.execute();
 
                 JOptionPane.showMessageDialog(null, "New Item Was Added");
 
             } catch (SQLException ex) {
-                Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
     }//GEN-LAST:event_jAddActionPerformed
-
-    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-    }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
@@ -661,14 +655,14 @@ public class StoreItemList extends javax.swing.JFrame {
                             Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } catch (SQLException ex) {
-                        Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

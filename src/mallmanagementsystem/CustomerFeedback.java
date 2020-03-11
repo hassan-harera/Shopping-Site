@@ -1,9 +1,10 @@
 package mallmanagementsystem;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -46,11 +47,6 @@ public class CustomerFeedback extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(249, 202, 36));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel1MouseReleased(evt);
-            }
-        });
 
         jLabelClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelClose.setForeground(new java.awt.Color(255, 255, 255));
@@ -65,6 +61,11 @@ public class CustomerFeedback extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Send Feedback");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,7 +154,7 @@ public class CustomerFeedback extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -193,24 +194,19 @@ public class CustomerFeedback extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
-
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
-
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelActionPerformed
+        new CustomerProfile(UserName).setVisible(true);
         this.dispose();
-        new HomePage().setVisible(true);
     }//GEN-LAST:event_jCancelActionPerformed
 
     private void jSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSendActionPerformed
-
         String message = jMessage.getText();
         if (message.equals("")) {
             JOptionPane.showMessageDialog(null, "Please Add A Message");
@@ -221,28 +217,22 @@ public class CustomerFeedback extends javax.swing.JFrame {
                 ps = con.prepareStatement(query);
                 ps.setInt(1, CustomerId);
                 ps.setString(2, message);
-                SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date d = new java.util.Date(System.currentTimeMillis());
-                String date = s.format(d);
-                ps.setString(3, date);
+                ps.setDate(3, Date.valueOf(LocalDate.now()));
                 ps.execute();
                 JOptionPane.showMessageDialog(null, "Your Message Was Sent");
+                new CustomerProfile(UserName).setVisible(true);
+                this.dispose();
             } catch (SQLException ex) {
                 Logger.getLogger(CustomerFeedback.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.dispose();
-            new CustomerProfile(UserName).setVisible(true);
         }
     }//GEN-LAST:event_jSendActionPerformed
 
-    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
-    }//GEN-LAST:event_jPanel1MouseReleased
+    }//GEN-LAST:event_jLabel2MouseReleased
 
 
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jCancel;
     private javax.swing.JLabel jLabel2;
@@ -257,20 +247,4 @@ public class CustomerFeedback extends javax.swing.JFrame {
     private javax.swing.JButton jSend;
     // End of variables declaration//GEN-END:variables
 
-    private boolean checkUsername(String uname) {
-        PreparedStatement ps;
-        String query = "select uname from user where uname=?";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setString(1, uname);
-            if (ps.executeQuery().next()) {
-                return true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerFeedback.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return false;
-    }
 }

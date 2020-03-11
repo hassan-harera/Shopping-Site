@@ -215,7 +215,7 @@ public class CustomerProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jOrdersActionPerformed
 
     private void jMallShopsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMallShopsActionPerformed
-        new CustomerShopping(UserName).setVisible(true);
+        new CustomerStoreList(UserName).setVisible(true);
         dispose();
     }//GEN-LAST:event_jMallShopsActionPerformed
 

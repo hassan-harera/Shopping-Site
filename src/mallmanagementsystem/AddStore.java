@@ -8,11 +8,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class AddShop extends javax.swing.JFrame {
+public class AddStore extends javax.swing.JFrame {
 
     private Connection con = null;
 
-    public AddShop() {
+    public AddStore() {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -31,7 +31,7 @@ public class AddShop extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jArea = new javax.swing.JTextField();
-        jadd = new javax.swing.JButton();
+        jAdd = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jName = new javax.swing.JTextField();
         jcancel = new javax.swing.JButton();
@@ -64,7 +64,7 @@ public class AddShop extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("New Shop ");
+        jLabel2.setText("New Store");
 
         jLabelMin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,7 +80,7 @@ public class AddShop extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel4.setText("Shop area:");
+        jLabel4.setText("Store Area:");
 
         jArea.setBackground(new java.awt.Color(108, 122, 137));
         jArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -91,28 +91,28 @@ public class AddShop extends javax.swing.JFrame {
             }
         });
 
-        jadd.setBackground(new java.awt.Color(34, 167, 240));
-        jadd.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jadd.setForeground(new java.awt.Color(255, 255, 255));
-        jadd.setText("Add");
-        jadd.addActionListener(new java.awt.event.ActionListener() {
+        jAdd.setBackground(new java.awt.Color(34, 167, 240));
+        jAdd.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jAdd.setForeground(new java.awt.Color(255, 255, 255));
+        jAdd.setText("Add");
+        jAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jaddActionPerformed(evt);
+                jAddActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel6.setText("Shop name:");
+        jLabel6.setText("Store Name:");
 
         jName.setBackground(new java.awt.Color(108, 122, 137));
         jName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jName.setForeground(new java.awt.Color(228, 241, 254));
 
         jcancel.setBackground(new java.awt.Color(242, 38, 19));
-        jcancel.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jcancel.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jcancel.setForeground(new java.awt.Color(255, 255, 255));
-        jcancel.setText("Cancel");
+        jcancel.setText("Back");
         jcancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcancelActionPerformed(evt);
@@ -128,18 +128,18 @@ public class AddShop extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jcancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jName)
                     .addComponent(jArea, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jadd, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                    .addComponent(jAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(96, 96, 96)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,9 +149,9 @@ public class AddShop extends javax.swing.JFrame {
                     .addComponent(jArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jadd)
+                    .addComponent(jAdd)
                     .addComponent(jcancel))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -160,7 +160,7 @@ public class AddShop extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -200,19 +200,16 @@ public class AddShop extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
-
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaddActionPerformed
-
+    private void jAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddActionPerformed
         String name = jName.getText();
         String area = jArea.getText();
         if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Shop Name");
+            JOptionPane.showMessageDialog(null, "Add a store name");
         } else if (area.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Shop Area");
+            JOptionPane.showMessageDialog(null, "Add a store area");
         } else {
             PreparedStatement ps;
             String query = "insert into shop(sname,sarea) VALUES (?,?);";
@@ -221,18 +218,16 @@ public class AddShop extends javax.swing.JFrame {
                 ps.setString(1, name);
                 ps.setInt(2, Integer.parseInt(area));
                 ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "New Store Was Added");
+                JOptionPane.showMessageDialog(null, "New store was added");
             } catch (SQLException ex) {
-                Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
             }
-            new AdminStoreList().setVisible(true);
+            new AddStore().setVisible(true);
             this.dispose();
-
         }
-    }//GEN-LAST:event_jaddActionPerformed
+    }//GEN-LAST:event_jAddActionPerformed
 
     private void jcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelActionPerformed
-
         new AdminStoreList().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jcancelActionPerformed
@@ -244,8 +239,6 @@ public class AddShop extends javax.swing.JFrame {
         } else {
             jArea.setEditable(false);
         }
-
-
     }//GEN-LAST:event_jAreaKeyPressed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
@@ -257,6 +250,7 @@ public class AddShop extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAdd;
     private javax.swing.JTextField jArea;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -267,7 +261,6 @@ public class AddShop extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JButton jadd;
     private javax.swing.JButton jcancel;
     // End of variables declaration//GEN-END:variables
 
@@ -281,7 +274,7 @@ public class AddShop extends javax.swing.JFrame {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddShop.class
+            Logger.getLogger(AddStore.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
 

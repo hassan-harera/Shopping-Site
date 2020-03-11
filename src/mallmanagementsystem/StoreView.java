@@ -39,15 +39,13 @@ public class StoreView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jBack = new javax.swing.JButton();
         jAdd = new javax.swing.JButton();
-        jItems = new javax.swing.JButton();
-        jOrder = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jRefresh = new javax.swing.JButton();
         jItemId = new javax.swing.JTextField();
         jAmount = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jDelete = new javax.swing.JButton();
+        jStoreCart = new javax.swing.JButton();
         jStoreName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,26 +113,6 @@ public class StoreView extends javax.swing.JFrame {
             }
         });
 
-        jItems.setBackground(new java.awt.Color(34, 167, 240));
-        jItems.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jItems.setForeground(new java.awt.Color(255, 255, 255));
-        jItems.setText("View store items");
-        jItems.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jItemsActionPerformed(evt);
-            }
-        });
-
-        jOrder.setBackground(new java.awt.Color(34, 167, 240));
-        jOrder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jOrder.setForeground(new java.awt.Color(255, 255, 255));
-        jOrder.setText("View order list");
-        jOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOrderActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Amount:");
@@ -187,13 +165,13 @@ public class StoreView extends javax.swing.JFrame {
         jTable3.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(jTable3);
 
-        jDelete.setBackground(new java.awt.Color(34, 167, 240));
-        jDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jDelete.setForeground(new java.awt.Color(255, 255, 255));
-        jDelete.setText("View this store cart");
-        jDelete.addActionListener(new java.awt.event.ActionListener() {
+        jStoreCart.setBackground(new java.awt.Color(34, 167, 240));
+        jStoreCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jStoreCart.setForeground(new java.awt.Color(255, 255, 255));
+        jStoreCart.setText("View my store cart");
+        jStoreCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDeleteActionPerformed(evt);
+                jStoreCartActionPerformed(evt);
             }
         });
 
@@ -209,9 +187,7 @@ public class StoreView extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jItems, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jStoreCart, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,10 +204,7 @@ public class StoreView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
+                        .addGap(80, 80, 80)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jItemId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,16 +215,15 @@ public class StoreView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jOrder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jItems)
+                        .addComponent(jStoreCart)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBack)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jBack))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jStoreName.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
@@ -309,18 +281,15 @@ public class StoreView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-
-        new BussinessProfile(Username).setVisible(true);
+        new CustomerStoreList(Username).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
@@ -348,12 +317,12 @@ public class StoreView extends javax.swing.JFrame {
                 ps.setDate(3, Date.valueOf(LocalDate.now()));
                 ps.setInt(4, Integer.parseInt(itemId));
                 ps.setInt(5, Integer.parseInt(amount));
-                ps.setDouble(6, price*Integer.parseInt(amount));
+                ps.setDouble(6, price * Integer.parseInt(amount));
                 ps.execute();
-           
+
                 JOptionPane.showMessageDialog(null, "New item was added to your cart");
             } catch (SQLException ex) {
-                Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AddStore.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jAddActionPerformed
@@ -364,23 +333,6 @@ public class StoreView extends javax.swing.JFrame {
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jLabel2MouseReleased
-
-    private void jItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jItemsActionPerformed
-
-    private void jOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderActionPerformed
-        String name = jItem.getText();
-        if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Store ID");
-        } else if (!checkShopID(name)) {
-            JOptionPane.showMessageDialog(null, "This Store Is Not Found");
-        } else {
-            int sid = Integer.parseInt(name);
-            new StoreCustomerOreders(sid, Username).setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jOrderActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
         getItems();
@@ -395,17 +347,17 @@ public class StoreView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jItemIdKeyPressed
 
-    private void jDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteActionPerformed
+    private void jStoreCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStoreCartActionPerformed
         String itemId = jItemId.getText();
-        Double price = Double.parseDouble(jAmount.getText());
         if (itemId == null) {
-            JOptionPane.showMessageDialog(null, "Add an id");
-        } else if (!checkItemIsFound(Integer.parseInt(itemId))) {
-            JOptionPane.showMessageDialog(null, "This item is not found");
+            JOptionPane.showMessageDialog(null, "Add the item id");
+        } else if (!checkItemId(Integer.parseInt(itemId))) {
+            JOptionPane.showMessageDialog(null, "This item is not existed in item list");
         } else {
-            deleteItem(Integer.parseInt(itemId));
+            new StoreCart(storeId, Username).setVisible(true);
+            dispose();
         }
-    }//GEN-LAST:event_jDeleteActionPerformed
+    }//GEN-LAST:event_jStoreCartActionPerformed
 
     private void jAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAmountKeyPressed
         char in = evt.getKeyChar();
@@ -420,43 +372,24 @@ public class StoreView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jStoreNameMouseReleased
 
-    private boolean checkShopID(String sid) {
-
-        PreparedStatement ps;
-        String query = "select sid from shop where sid=?";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setInt(1, Integer.parseInt(sid));
-            if (ps.executeQuery().next()) {
-                return true;
-            }
-            return false;
-        } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(StoreView.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-
-    }
+ 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAdd;
     private javax.swing.JTextField jAmount;
     private javax.swing.JButton jBack;
-    private javax.swing.JButton jDelete;
     private javax.swing.JTextField jItemId;
-    private javax.swing.JButton jItems;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
-    private javax.swing.JButton jOrder;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jStoreCart;
     private javax.swing.JLabel jStoreName;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
@@ -476,137 +409,7 @@ public class StoreView extends javax.swing.JFrame {
         }
         jScrollPane2.setViewportView(jTable3);
     }
-
-    private boolean checkItemIsFound(Integer itemId) {
-        PreparedStatement ps;
-        try {
-            String query = "select iiid from item where iiid = ?";
-            ps = con.prepareStatement(query);
-            ps.setInt(1, itemId);
-            res = ps.executeQuery();
-            if (res.next()) {
-                return true;
-            }
-        } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-
-    private void modifyCategory(Integer itemId, String category) {
-        PreparedStatement ps;
-        int categoryId = 0;
-        String query = "select cid from category where cname = ?;";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setString(1, category);
-            res = ps.executeQuery();
-            if (res.next()) {
-                categoryId = res.getInt("cid");
-                try {
-                    query = "update item set cid = ? where iiid";
-                    ps = con.prepareStatement(query);
-                    ps.setInt(1, categoryId);
-                    ps.setInt(2, itemId);
-                    ps.executeUpdate();
-                } catch (SQLException | NumberFormatException ex) {
-                    Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                query = "insert into ctegory(cname) VALUES (?);";
-                try {
-                    ps = con.prepareStatement(query);
-                    ps.setString(1, category);
-                    ps.execute();
-                    query = "select cid from category where cname = ?;";
-                    try {
-                        ps = con.prepareStatement(query);
-                        ps.setString(1, category);
-                        res = ps.executeQuery();
-                        if (res.next()) {
-                            categoryId = res.getInt("cid");
-                        }
-                        try {
-                            query = "update item set cid = ? where iiid = ?";
-                            ps = con.prepareStatement(query);
-                            ps.setInt(1, categoryId);
-                            ps.setInt(2, itemId);
-                            ps.executeUpdate();
-                        } catch (SQLException | NumberFormatException ex) {
-                            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void modifyName(Integer itemId, String name) {
-        PreparedStatement ps;
-        try {
-            String query = "update item set iname = ? where iiid = ?";
-            ps = con.prepareStatement(query);
-            ps.setString(1, name);
-            ps.setInt(2, itemId);
-            ps.executeUpdate();
-        } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void modifyAmount(Integer itemId, Integer amount) {
-        PreparedStatement ps;
-        try {
-            String query = "update shopitems set amount = ? where iiid = ?";
-            ps = con.prepareStatement(query);
-            ps.setInt(1, amount);
-            ps.setInt(2, itemId);
-            ps.executeUpdate();
-        } catch (SQLException | NumberFormatException ex) {
-            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void modifyPrice(Integer itemId, Double price) {
-        PreparedStatement ps;
-        try {
-            String query = "update shopitems set iprice = ? where iid = ?";
-            ps = con.prepareStatement(query);
-            ps.setDouble(1, price);
-            ps.setInt(2, itemId);
-            ps.executeUpdate();
-
-            query = "update item set price = ? where iiid = ?";
-            ps = con.prepareStatement(query);
-            ps.setDouble(1, price);
-            ps.setInt(2, itemId);
-            ps.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private void deleteItem(int itemId) {
-        PreparedStatement ps;
-        try {
-            String query = "delete from shopitems where iid = ? and sid = ?";
-            ps = con.prepareStatement(query);
-            ps.setInt(1, itemId);
-            ps.setInt(2, storeId);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     private void setStoreName() {
         PreparedStatement ps;
         try {
