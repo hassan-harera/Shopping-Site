@@ -14,15 +14,17 @@ public class StoreView extends javax.swing.JFrame {
     private ResultSet res;
     private final String Username;
     private final int storeId;
+    private final int customerId;
 
     public StoreView(int sid, String uname) {
         con = MyConnection.con();
         Username = uname;
         storeId = sid;
+        setStoreName();
+        customerId = getCustomerId();
         initComponents();
         this.setLocationRelativeTo(null);
         getItems();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -46,6 +48,7 @@ public class StoreView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jDelete = new javax.swing.JButton();
+        jStoreName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -69,7 +72,7 @@ public class StoreView extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Item List");
+        jLabel2.setText("Store ");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel2MouseReleased(evt);
@@ -251,13 +254,23 @@ public class StoreView extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jStoreName.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
+        jStoreName.setForeground(new java.awt.Color(255, 255, 255));
+        jStoreName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jStoreNameMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMin)
                 .addGap(18, 18, 18)
@@ -274,7 +287,8 @@ public class StoreView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelClose)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jStoreName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -311,69 +325,36 @@ public class StoreView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddActionPerformed
-        String name = jName.getText();
-        String category = jCategory.getText();
-        Integer amount = Integer.parseInt(jAmount.getText());
-        Integer categoryId = 0;
-        Integer itemId = 0;
-        Double price = Double.parseDouble(jAmount.getText());
-        if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add a name");
-        } else if (category.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add the item category");
-        } else if (amount == null) {
-            JOptionPane.showMessageDialog(null, "Add the amount of item");
-        } else if (price == null) {
-            JOptionPane.showMessageDialog(null, "write the item price");
+        String itemId = jItemId.getText();
+        String amount = jAmount.getText();
+        if (itemId.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add the item id");
+        } else if (amount.equals("")) {
+            JOptionPane.showMessageDialog(null, "Add the amount you want");
+        } else if (!checkItemId(Integer.parseInt(itemId))) {
+            JOptionPane.showMessageDialog(null, "This item is not existed in item list");
         } else {
+            if (checkOrder(Integer.parseInt(itemId))) {
+                JOptionPane.showMessageDialog(null, "This item is already existed in your cart");
+                return;
+            }
+            double price = getItemPrice(Integer.parseInt(itemId));
             PreparedStatement ps;
-            String query = "INSERT INTO category (cname) SELECT * FROM (SELECT 'juice') AS tmp WHERE NOT EXISTS ( SELECT cname FROM category WHERE cname = ? ) LIMIT 1;";
+            String query = "INSERT INTO customeritems (cid,sid,date,iid,amount,totalprice,ischeckedout) SELECT * FROM (SELECT ?,?,?,?,?,?,0) AS tmp WHERE NOT EXISTS ( SELECT iid,sid,cid FROM customeritems WHERE iid,sid,cid  = ? ) LIMIT 1;";
             try {
                 ps = con.prepareStatement(query);
-                ps.setString(1, category);
+                ps.setInt(1, customerId);
+                ps.setInt(2, storeId);
+                ps.setDate(3, Date.valueOf(LocalDate.now()));
+                ps.setInt(4, Integer.parseInt(itemId));
+                ps.setInt(5, Integer.parseInt(amount));
+                ps.setDouble(6, price*Integer.parseInt(amount));
                 ps.execute();
-
-                query = "select cid from category where cname = ?;";
-                ps = con.prepareStatement(query);
-                ps.setString(1, category);
-                res = ps.executeQuery();
-                if (res.next()) {
-                    categoryId = res.getInt("cid");
-                }
-
-                query = "insert into item(iname,cid,price) VALUES (?,?,?);";
-                ps = con.prepareStatement(query);
-                ps.setString(1, name);
-                ps.setInt(2, categoryId);
-                ps.setDouble(3, price);
-                ps.execute();
-
-                query = "select iiid from item where iname = ?;";
-                ps = con.prepareStatement(query);
-
-                ps.setString(1, name);
-                res = ps.executeQuery();
-                if (res.next()) {
-                    itemId = res.getInt("iiid");
-                }
-
-                query = "insert into shopitems(iid,amount,price,date,sid) VALUES (?,?,?,?,?);";
-                ps = con.prepareStatement(query);
-
-                ps.setInt(1, itemId);
-                ps.setInt(2, amount);
-                ps.setDouble(3, price);
-                ps.setDate(4, Date.valueOf(LocalDate.now()));
-                ps.setInt(5, storeId);
-
-                ps.execute();
-
-                JOptionPane.showMessageDialog(null, "New Item Was Added");
-
+           
+                JOptionPane.showMessageDialog(null, "New item was added to your cart");
             } catch (SQLException ex) {
                 Logger.getLogger(AddShop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }//GEN-LAST:event_jAddActionPerformed
 
@@ -435,6 +416,10 @@ public class StoreView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jAmountKeyPressed
 
+    private void jStoreNameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jStoreNameMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jStoreNameMouseReleased
+
     private boolean checkShopID(String sid) {
 
         PreparedStatement ps;
@@ -472,6 +457,7 @@ public class StoreView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jRefresh;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jStoreName;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 
@@ -483,11 +469,10 @@ public class StoreView extends javax.swing.JFrame {
             ps = con.prepareStatement(query);
             ps.setInt(1, storeId);
             res = ps.executeQuery();
-            String[] strs = {"Item Id", "Item Name", "Category", "Price", "Amount", "Last Add"};
+            String[] strs = {"Item Id", "Item Name", "Category", "Price"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(StoreItems.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable3);
     }
@@ -620,5 +605,86 @@ public class StoreView extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void setStoreName() {
+        PreparedStatement ps;
+        try {
+            String query = "select sname from shop where sid = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, storeId);
+            res = ps.executeQuery();
+            if (res.next()) {
+                jStoreName.setText(res.getString("sname"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private boolean checkItemId(int itemId) {
+        PreparedStatement ps;
+        try {
+            String query = "select iiid from item where iiid = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, itemId);
+            res = ps.executeQuery();
+            if (res.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    private double getItemPrice(int itemId) {
+        PreparedStatement ps;
+        try {
+            String query = "select price from item where iiid = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, itemId);
+            res = ps.executeQuery();
+            if (res.next()) {
+                return res.getDouble("price");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    private boolean checkOrder(int itemId) {
+        PreparedStatement ps;
+        try {
+            String query = "select date from customeritems where cid = ? and sid = ? and iid = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, customerId);
+            ps.setInt(2, storeId);
+            ps.setInt(3, itemId);
+            res = ps.executeQuery();
+            if (res.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    private int getCustomerId() {
+        PreparedStatement ps;
+        try {
+            String query = "select cid from customer where uname = ?;";
+            ps = con.prepareStatement(query);
+            ps.setString(1, Username);
+            res = ps.executeQuery();
+            if (res.next()) {
+                return res.getInt("cid");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StoreView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

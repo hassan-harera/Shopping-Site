@@ -149,9 +149,9 @@ public class CustomerOrders extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +165,7 @@ public class CustomerOrders extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,20 +175,17 @@ public class CustomerOrders extends javax.swing.JFrame {
                 .addComponent(jRefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,6 +194,9 @@ public class CustomerOrders extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,8 +234,7 @@ public class CustomerOrders extends javax.swing.JFrame {
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
-
-
+        getCustomerOrders();
     }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderIdActionPerformed
@@ -253,7 +252,6 @@ public class CustomerOrders extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jCancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelOrderActionPerformed
-
         String oid = jOrderId.getText();
         if (oid.equals("")) {
             JOptionPane.showMessageDialog(null, "Please Enter Oredr ID");
@@ -324,12 +322,28 @@ public class CustomerOrders extends javax.swing.JFrame {
     }
 
     private void cancelOrder(String oid) {
-
-        String query = "delete from customeritems where oid = ?";
+        Boolean isShiped = false;
+        String query = "select isshiped from customeritems where oid = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, Integer.parseInt(oid));
+            res = ps.executeQuery();
+            if (res.next()) {
+                isShiped = res.getBoolean("isshiped");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerOrders.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (isShiped) {
+            JOptionPane.showMessageDialog(null, "This order was shiped you can not cancel it");
+            return;
+        }
+        query = "delete from customeritems where oid = ? and isshiped = 1";
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, Integer.parseInt(oid));
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Your order was canceled");
         } catch (SQLException ex) {
             Logger.getLogger(CustomerOrders.class.getName()).log(Level.SEVERE, null, ex);
         }

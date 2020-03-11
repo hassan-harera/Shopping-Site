@@ -11,13 +11,11 @@ public class CustomerCart extends javax.swing.JFrame {
 
     private final Connection con;
     private final String userName;
-    private final int customerId;
     private ResultSet res;
 
-    public CustomerCart(String uname, int cid) {
+    public CustomerCart(String uname) {
         con = MyConnection.con();
         userName = uname;
-        customerId = cid;
         initComponents();
         this.setLocationRelativeTo(null);
         getCart();
@@ -279,17 +277,17 @@ public class CustomerCart extends javax.swing.JFrame {
     private void jConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmActionPerformed
         String orderId = jOrderId.getText();
         if (orderId.equals("")) {
-            JOptionPane.showMessageDialog(null, "Enter an order id");
+            JOptionPane.showMessageDialog(null, "Enter the order id");
         } else if (!checkOrderId(Integer.parseInt(orderId))) {
-            JOptionPane.showMessageDialog(null, "this.order is not existed");
+            JOptionPane.showMessageDialog(null, "this order is not existed in your cart");
         } else {
             PreparedStatement ps;
-            String query = "update customeritems set ischeckedout = 1 where oid = ?";
+            String query = "update customeritems set ischeckedout = 1 where oid = ?;";
             try {
                 ps = con.prepareStatement(query);
                 ps.setInt(1, Integer.parseInt(orderId));
                 ps.executeUpdate();
-            } catch (SQLException | NumberFormatException ex) {
+            } catch (SQLException ex) {
                 Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -332,7 +330,7 @@ public class CustomerCart extends javax.swing.JFrame {
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
-            String[] strs = {"Order Id", "Store Name", "Item Name", "Item Amount", "Total Price", "Add Date"};
+            String[] strs = {"Order Id", "Store Name", "Item Name", "Item Amount", "Total Price", "Adding Date"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
             Logger.getLogger(CustomerCart.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class CustomerShopping extends javax.swing.JFrame {
 
@@ -15,10 +16,9 @@ public class CustomerShopping extends javax.swing.JFrame {
     public CustomerShopping(String uname) {
         con = MyConnection.con();
         userName = uname;
-        getStoreList();
         initComponents();
         this.setLocationRelativeTo(null);
-
+        getStoreList();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +31,7 @@ public class CustomerShopping extends javax.swing.JFrame {
         jLabelMin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jShopId = new javax.swing.JTextField();
+        jStoreId = new javax.swing.JTextField();
         jback = new javax.swing.JButton();
         jEnter = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -77,17 +77,17 @@ public class CustomerShopping extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
         jLabel4.setText("Store Id:");
 
-        jShopId.setBackground(new java.awt.Color(108, 122, 137));
-        jShopId.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
-        jShopId.setForeground(new java.awt.Color(228, 241, 254));
-        jShopId.addActionListener(new java.awt.event.ActionListener() {
+        jStoreId.setBackground(new java.awt.Color(108, 122, 137));
+        jStoreId.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jStoreId.setForeground(new java.awt.Color(228, 241, 254));
+        jStoreId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jShopIdActionPerformed(evt);
+                jStoreIdActionPerformed(evt);
             }
         });
-        jShopId.addKeyListener(new java.awt.event.KeyAdapter() {
+        jStoreId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jShopIdKeyPressed(evt);
+                jStoreIdKeyPressed(evt);
             }
         });
 
@@ -146,7 +146,7 @@ public class CustomerShopping extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(jShopId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jStoreId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,18 +154,18 @@ public class CustomerShopping extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
+                        .addGap(99, 99, 99)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jShopId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jStoreId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addComponent(jEnter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jback)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(jback))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -216,40 +216,43 @@ public class CustomerShopping extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbackActionPerformed
 
-    private void jShopIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShopIdActionPerformed
+    private void jStoreIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStoreIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jShopIdActionPerformed
+    }//GEN-LAST:event_jStoreIdActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
-
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
-
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnterActionPerformed
-
-        getShopList();
+        String storeId = jStoreId.getText();
+        if (storeId.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please Enter Oredr ID");
+        } else if (!checkStoreId(storeId)) {
+            JOptionPane.showMessageDialog(null, "This Order Is Not Found");
+        } else {
+            new StoreView(Integer.parseInt(storeId),userName).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jEnterActionPerformed
 
-    private void jShopIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jShopIdKeyPressed
-
+    private void jStoreIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jStoreIdKeyPressed
         char in = evt.getKeyChar();
         if (Character.isDigit(in)) {
-            jShopId.setEditable(true);
+            jStoreId.setEditable(true);
         } else {
-            jShopId.setEditable(false);
+            jStoreId.setEditable(false);
         }
-
-    }//GEN-LAST:event_jShopIdKeyPressed
+    }//GEN-LAST:event_jStoreIdKeyPressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MouseReleased
-    private boolean checkShopID(String sid) {
+    private boolean checkStoreId(String sid) {
 
         PreparedStatement ps;
         String query = "select sid from shop where sid=?";
@@ -259,12 +262,10 @@ public class CustomerShopping extends javax.swing.JFrame {
             if (ps.executeQuery().next()) {
                 return true;
             }
-            return false;
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(CustomerShopping.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-
     }
 
 
@@ -277,7 +278,7 @@ public class CustomerShopping extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jShopId;
+    private javax.swing.JTextField jStoreId;
     private javax.swing.JTable jTable3;
     private javax.swing.JButton jback;
     // End of variables declaration//GEN-END:variables
@@ -285,7 +286,7 @@ public class CustomerShopping extends javax.swing.JFrame {
     private void getStoreList() {
 
         PreparedStatement ps;
-        String query = "SELECT O.sid, O.sname , P.oname FROM shop O JOIN owner P ON P.oid = O.sid where O.oid npt null order by O.sid;";
+        String query = "SELECT O.sid, O.sname , P.oname FROM shop O JOIN owner P ON P.oid = O.sid where O.oid is not null order by O.sid;";
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
