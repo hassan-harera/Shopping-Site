@@ -17,7 +17,7 @@ public class AdminStoreList extends javax.swing.JFrame {
         con = MyConnection.con();
         initComponents();
         this.setLocationRelativeTo(null);
-        getShopList();
+        getStoreList();
     }
 
     @SuppressWarnings("unchecked")
@@ -94,9 +94,9 @@ public class AdminStoreList extends javax.swing.JFrame {
         });
 
         jSellHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jSellHistory.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jSellHistory.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jSellHistory.setForeground(new java.awt.Color(255, 255, 255));
-        jSellHistory.setText("View Shop Sell History");
+        jSellHistory.setText("View store sell history");
         jSellHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSellHistoryActionPerformed(evt);
@@ -104,7 +104,7 @@ public class AdminStoreList extends javax.swing.JFrame {
         });
 
         jBack.setBackground(new java.awt.Color(242, 38, 19));
-        jBack.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jBack.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jBack.setForeground(new java.awt.Color(255, 255, 255));
         jBack.setText("Back");
         jBack.addActionListener(new java.awt.event.ActionListener() {
@@ -114,9 +114,9 @@ public class AdminStoreList extends javax.swing.JFrame {
         });
 
         jAddShop.setBackground(new java.awt.Color(249, 202, 36));
-        jAddShop.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jAddShop.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jAddShop.setForeground(new java.awt.Color(255, 255, 255));
-        jAddShop.setText("Add New Shop");
+        jAddShop.setText("Add new store");
         jAddShop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAddShopActionPerformed(evt);
@@ -124,9 +124,9 @@ public class AdminStoreList extends javax.swing.JFrame {
         });
 
         jVisitHistory.setBackground(new java.awt.Color(34, 167, 240));
-        jVisitHistory.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jVisitHistory.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jVisitHistory.setForeground(new java.awt.Color(255, 255, 255));
-        jVisitHistory.setText("View Shop Visit History");
+        jVisitHistory.setText("View store visit history");
         jVisitHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jVisitHistoryActionPerformed(evt);
@@ -134,7 +134,7 @@ public class AdminStoreList extends javax.swing.JFrame {
         });
 
         jRefresh.setBackground(new java.awt.Color(34, 167, 240));
-        jRefresh.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jRefresh.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jRefresh.setForeground(new java.awt.Color(255, 255, 255));
         jRefresh.setText("Refresh");
         jRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class AdminStoreList extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -257,9 +257,9 @@ public class AdminStoreList extends javax.swing.JFrame {
     private void jVisitHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisitHistoryActionPerformed
         String name = jStoreId.getText();
         if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+            JOptionPane.showMessageDialog(null, "Add A store Id");
         } else if (!checkShopID(name)) {
-            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
+            JOptionPane.showMessageDialog(null, "This store is not existed in store list");
         } else {
             int sid = Integer.parseInt(jStoreId.getText());
             new StoreVisitHistory(sid, true, null).setVisible(true);
@@ -280,9 +280,9 @@ public class AdminStoreList extends javax.swing.JFrame {
     private void jSellHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSellHistoryActionPerformed
         String name = jStoreId.getText();
         if (name.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Shop ID");
+            JOptionPane.showMessageDialog(null, "Add A store Id");
         } else if (!checkShopID(name)) {
-            JOptionPane.showMessageDialog(null, "This Shop Is Not Found");
+            JOptionPane.showMessageDialog(null, "This store is not existed in store list");
         } else {
             int sid = Integer.parseInt(jStoreId.getText());
             new StoreSellHistory(sid, true, null).setVisible(true);
@@ -303,7 +303,7 @@ public class AdminStoreList extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
-        getShopList();
+        getStoreList();
     }//GEN-LAST:event_jRefreshActionPerformed
 
     private void jStoreIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jStoreIdKeyPressed
@@ -350,14 +350,14 @@ public class AdminStoreList extends javax.swing.JFrame {
     private javax.swing.JButton jVisitHistory;
     // End of variables declaration//GEN-END:variables
 
-    private void getShopList() {
+    private void getStoreList() {
 
         PreparedStatement ps;
         String query = "SELECT O.sid, O.sname , O.sarea , O.budget , P.oname FROM shop O JOIN owner P ON P.oid = O.sid order by O.sid;";
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
-            String[] strs = {"Shop ID", "Shop Name", "Shop Area", "Rent Value", "Company Name"};
+            String[] strs = {"Store Id", "Store Name", "Store Area", "Rent Value", "Company Name"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
             Logger.getLogger(AdminProfile.class.getName()).log(Level.SEVERE, null, ex);

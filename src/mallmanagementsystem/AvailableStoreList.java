@@ -181,7 +181,7 @@ public class AvailableStoreList extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(102, 102, 102)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jStoreId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,9 +277,13 @@ public class AvailableStoreList extends javax.swing.JFrame {
                 ps.setInt(5, Integer.parseInt(storeId));
                 ps.setInt(6, companyId);
                 ps.execute();
+                JOptionPane.showMessageDialog(null, "your request was sent");
+                jStoreId.setText("");
+                jPudget.setText("");
             } catch (SQLException ex) {
                 Logger.getLogger(AvailableStoreList.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }//GEN-LAST:event_jRequestRentActionPerformed
 
@@ -341,11 +345,11 @@ public class AvailableStoreList extends javax.swing.JFrame {
     private void getAvailableStoreList() {
 
         PreparedStatement ps;
-        String query = "SELECT sid, sname , sarea FROM shop where oid is null order by sid;";
+        String query = "SELECT sid,sname,sarea FROM shop where oid is null order by sid;";
         try {
             ps = con.prepareStatement(query);
             res = ps.executeQuery();
-            String[] strs = {"Shop ID", "Shop Name", "Shop Area"};
+            String[] strs = {"Store Id", "Store Name", "Store Area"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
             Logger.getLogger(AvailableStoreList.class.getName()).log(Level.SEVERE, null, ex);

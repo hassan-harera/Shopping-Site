@@ -87,7 +87,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jShowGuestBook.setBackground(new java.awt.Color(34, 167, 240));
         jShowGuestBook.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jShowGuestBook.setForeground(new java.awt.Color(255, 255, 255));
-        jShowGuestBook.setText("Show GuestBook Messages");
+        jShowGuestBook.setText("Show Guestbook Messages");
         jShowGuestBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jShowGuestBookActionPerformed(evt);
@@ -97,7 +97,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jShowShops.setBackground(new java.awt.Color(34, 167, 240));
         jShowShops.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jShowShops.setForeground(new java.awt.Color(255, 255, 255));
-        jShowShops.setText("Manage Mall shops");
+        jShowShops.setText("Manage Mall stores");
         jShowShops.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jShowShopsActionPerformed(evt);

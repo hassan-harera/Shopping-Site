@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -314,14 +316,16 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Add A Username");
         } else if (pass1.equals("")) {
             JOptionPane.showMessageDialog(null, "Add A Password");
-        } else if (!pass2.equals(pass1)) {
-            JOptionPane.showMessageDialog(null, "Retype The Password Again");
-        } else if (checkUsername(uname) == true) {
-            JOptionPane.showMessageDialog(null, "this user name is already exists enter another or login");
         } else if (tele.equals("")) {
             JOptionPane.showMessageDialog(null, "Add A tele-number");
         } else if (email.equals("")) {
             JOptionPane.showMessageDialog(null, "Add An Email");
+        } else if (checkUsername(uname) == true) {
+            JOptionPane.showMessageDialog(null, "this user name is already exists enter another or login");
+        } else if (!pass2.equals(pass1)) {
+            JOptionPane.showMessageDialog(null, "Retype The Password Again");
+        } else if (!checkEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "this cannot be a valid email");
         } else {
 
             PreparedStatement ps;
@@ -434,5 +438,12 @@ public class Signup extends javax.swing.JFrame {
         }
 
         return false;
+    }
+
+    private boolean checkEmailFormat(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
