@@ -89,6 +89,9 @@ public class AddStore extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jAreaKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jAreaKeyTyped(evt);
+            }
         });
 
         jAdd.setBackground(new java.awt.Color(34, 167, 240));
@@ -108,6 +111,11 @@ public class AddStore extends javax.swing.JFrame {
         jName.setBackground(new java.awt.Color(108, 122, 137));
         jName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jName.setForeground(new java.awt.Color(228, 241, 254));
+        jName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNameKeyTyped(evt);
+            }
+        });
 
         jcancel.setBackground(new java.awt.Color(242, 38, 19));
         jcancel.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
@@ -247,6 +255,15 @@ public class AddStore extends javax.swing.JFrame {
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         this.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
     }//GEN-LAST:event_jPanel1MouseReleased
+
+    private void jAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAreaKeyTyped
+
+        
+    }//GEN-LAST:event_jAreaKeyTyped
+
+    private void jNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNameKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

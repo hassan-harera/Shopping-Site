@@ -544,8 +544,7 @@ public class StoreItemList extends javax.swing.JFrame {
             String[] strs = {"Item Id", "Item Name", "Category", "Price", "Amount", "Last Add"};
             jTable3.setModel(BuildDefultModel.buildTableModel(res, Arrays.asList(strs)));
         } catch (SQLException ex) {
-            Logger.getLogger(StoreItems.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StoreItemList.class.getName()).log(Level.SEVERE, null, ex);
         }
         jScrollPane2.setViewportView(jTable3);
     }
